@@ -59,7 +59,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
-    - _HighlightPower: 2.3
+    - _HighlightPower: 3
     - _MetallicStrength: 0
     - _NormalStrength: 1
     - _QueueControl: 0

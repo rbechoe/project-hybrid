@@ -11,6 +11,7 @@ public class WaterSurface : MonoBehaviour
 
     private void LateUpdate()
     {
-        material.SetVector("_SunDirection", -transform.forward);
+        var dir = transform.forward;
+        material.SetVector("_SunDirection", -dir);
     }
 }
