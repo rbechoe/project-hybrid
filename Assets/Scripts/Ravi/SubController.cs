@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SubController : MonoBehaviour
 {
-    float diveSpeed = 2;
+    public float maxDiveSpeed = 2;
+    public float diveSpeedIncrement = 0.1f;
+    public float currentDiveSpeed = 0f;
+    public float waterResistance = 0.2f;
+    public float graceFloat = 2f;
+    public float graceFloatReset = 2f;
 
     public AudioSource cabinSFX;
     public AudioSource localSFX;
@@ -13,12 +19,22 @@ public class SubController : MonoBehaviour
 
     public AudioClip diveSFX;
 
+    public CinemachineDollyCart CDC;
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.position += Vector3.down * Time.deltaTime * diveSpeed;
+            if (currentDiveSpeed < maxDiveSpeed) currentDiveSpeed += diveSpeedIncrement * Time.deltaTime;
+            graceFloat = graceFloatReset;
         }
+
+        graceFloat -= Time.deltaTime;
+        if (graceFloat < 0 && currentDiveSpeed > 0) currentDiveSpeed -= waterResistance * Time.deltaTime;
+
+        currentDiveSpeed = Mathf.Clamp(currentDiveSpeed, 0, maxDiveSpeed);
+
+        CDC.m_Speed = currentDiveSpeed;
     }
 
     public void StartDive()
