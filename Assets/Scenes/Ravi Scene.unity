@@ -3271,7 +3271,7 @@ GameObject:
   - component: {fileID: 1379021851}
   - component: {fileID: 1379021850}
   m_Layer: 7
-  m_Name: pp main underwater
+  m_Name: pp sides underwater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
