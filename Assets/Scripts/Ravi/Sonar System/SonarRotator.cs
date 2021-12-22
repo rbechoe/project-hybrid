@@ -6,7 +6,7 @@ public class SonarRotator : MonoBehaviour
 {
     void Update()
     {
-        transform.localEulerAngles += Vector3.up * 50 * Time.deltaTime;
+        transform.localEulerAngles += Vector3.up * 100 * Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision)

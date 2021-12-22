@@ -42,32 +42,33 @@ public class SonarScanner : MonoBehaviour
             {
                 if (enemy.CompareTag("Enemy") && !hits.Contains(enemy.gameObject))
                 {
+                    float size = enemy.GetComponent<EnemyInfo>().size;
                     // Logic: https://gyazo.com/26f23a1369e45a2106c830e53105f53c
                     float x = 0;
                     float y = 0;
                     float z = 0;
                     if (enemy.transform.position.x > transform.position.x)
                     {
-                        x = (enemy.transform.position.x - transform.position.x) / 2f;
+                        x = (enemy.transform.position.x - transform.position.x) / 2f + size / 2f;
                     }
                     else
                     {
-                        x -= (transform.position.x - enemy.transform.position.x) / 2f;
+                        x -= (transform.position.x - enemy.transform.position.x) / 2f - size / 2f;
                     }
                     if (enemy.transform.position.z > transform.position.z)
                     {
-                        z = (enemy.transform.position.z - transform.position.z) / 2f;
+                        z = (enemy.transform.position.z - transform.position.z) / 2f + size / 2f;
                     }
                     else
                     {
-                        z -= (transform.position.z - enemy.transform.position.z) / 2f;
+                        z -= (transform.position.z - enemy.transform.position.z) / 2f - size / 2f;
                     }
 
                     // spawn gob based on size and relative position
                     GameObject gob = Instantiate(ball, spawn.position, Quaternion.identity);
                     gob.transform.parent = spawn;
                     gob.transform.localPosition = new Vector3(x, y, z);
-                    gob.transform.localScale = Vector3.one * enemy.GetComponent<EnemyInfo>().size;
+                    gob.transform.localScale = Vector3.one * size;
 
                     hits.Add(enemy.gameObject);
                 }

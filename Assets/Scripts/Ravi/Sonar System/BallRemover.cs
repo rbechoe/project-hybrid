@@ -6,7 +6,7 @@ public class BallRemover : MonoBehaviour
 {
     bool enabled = false;
     bool fading = false;
-    float aliveTimer = 4;
+    float aliveTimer = 2;
 
     Material mat;
 
@@ -37,7 +37,7 @@ public class BallRemover : MonoBehaviour
                 if (aliveTimer <= 0)
                 {
                     fading = true;
-                    aliveTimer = 4;
+                    aliveTimer = 2;
                 }
             }
         }
