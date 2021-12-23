@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SonarScanner : MonoBehaviour
 {
-    public GameObject ball, scanner;
+    public GameObject ball;
     public Transform spawn;
 
     public LayerMask hitLayers;
@@ -34,8 +34,6 @@ public class SonarScanner : MonoBehaviour
         int step = 0;
         while (step < 50)
         {
-            scanner.transform.localScale = Vector3.one * step * 2;
-
             Collider[] enemies = Physics.OverlapSphere(transform.position, 2 * step, hitLayers);
 
             foreach (Collider enemy in enemies)
