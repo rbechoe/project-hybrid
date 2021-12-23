@@ -6,7 +6,8 @@ public class BallRemover : MonoBehaviour
 {
     bool enabled = false;
     bool fading = false;
-    float aliveTimer = 2;
+    float aliveTimer;
+    float aliveReset = 1;
 
     Material mat;
 
@@ -14,6 +15,7 @@ public class BallRemover : MonoBehaviour
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         mat = gameObject.GetComponent<MeshRenderer>().material;
+        aliveTimer = aliveReset;
     }
 
     void Update()
@@ -37,7 +39,7 @@ public class BallRemover : MonoBehaviour
                 if (aliveTimer <= 0)
                 {
                     fading = true;
-                    aliveTimer = 2;
+                    aliveTimer = aliveReset;
                 }
             }
         }

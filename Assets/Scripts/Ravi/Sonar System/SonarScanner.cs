@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class SonarScanner : MonoBehaviour
 {
-    public GameObject ball;
+    public GameObject ball, scannerObj, radarObj;
     public Transform spawn;
 
     public LayerMask hitLayers;
 
     float scanTimer = 0;
-
-    void Start()
-    {
-        
-    }
+    public float scanReset = 2f;
 
     void Update()
     {
@@ -22,8 +18,9 @@ public class SonarScanner : MonoBehaviour
 
         if (scanTimer < 0)
         {
+            scannerObj.transform.localScale = Vector3.one;
             StartCoroutine(ScanLogic());
-            scanTimer = 5;
+            scanTimer = scanReset;
         }
     }
 
@@ -32,7 +29,7 @@ public class SonarScanner : MonoBehaviour
         List<GameObject> hits = new List<GameObject>();
 
         int step = 0;
-        while (step < 50)
+        while (step < (scanReset * 20))
         {
             Collider[] enemies = Physics.OverlapSphere(transform.position, 2 * step, hitLayers);
 
@@ -72,9 +69,11 @@ public class SonarScanner : MonoBehaviour
                 }
             }
 
-            // 10 steps per second
+            // 20 steps per second
+            scannerObj.transform.localScale = Vector3.one * 2 * step;
+            radarObj.transform.localScale = new Vector3(1, 0, 1) * 2 * step;
             step++;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         yield return new WaitForEndOfFrame();

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class SonarRotator : MonoBehaviour
 {
-    void Update()
-    {
-        transform.localEulerAngles += Vector3.up * 100 * Time.deltaTime;
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         // enable objects on hit
