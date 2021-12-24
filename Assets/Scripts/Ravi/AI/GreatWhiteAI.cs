@@ -13,7 +13,6 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     public float detectRange = 20;
     public float attackRange = 5;
     public float followSpeed = 5f;
-    public float rotateSpeed = 5f;
 
     Animator anim;
     GameObject player;
@@ -55,6 +54,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         if (!attacking)
         {
             cart.moving = true;
+            cart.moveSpeed = followSpeed;
 
             Vector3 targetDir = cart.transform.position - transform.position;
             float step = followSpeed * Time.deltaTime;
@@ -62,7 +62,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
             transform.rotation = Quaternion.LookRotation(newDir);
 
             // Move forward
-            transform.position += transform.forward * rotateSpeed * Time.deltaTime;
+            transform.position += transform.forward * followSpeed * Time.deltaTime;
             if (transform.position.y <= 1)
             {
                 transform.position = new Vector3(transform.position.x, 1, transform.position.z);

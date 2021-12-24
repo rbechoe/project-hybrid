@@ -7,7 +7,9 @@ public class SharkCart : MonoBehaviour
 {
     CinemachineDollyCart CDC;
 
+    [HideInInspector]
     public float moveSpeed;
+    [HideInInspector]
     public bool moving;
 
     // Start is called before the first frame update

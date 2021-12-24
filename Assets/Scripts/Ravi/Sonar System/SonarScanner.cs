@@ -11,6 +11,7 @@ public class SonarScanner : MonoBehaviour
 
     float scanTimer = 0;
     public float scanReset = 2f;
+    public float scanRangeMultiplier = 1f;
 
     void Update()
     {
@@ -31,7 +32,7 @@ public class SonarScanner : MonoBehaviour
         int step = 0;
         while (step < (scanReset * 20))
         {
-            Collider[] enemies = Physics.OverlapSphere(transform.position, 2 * step, hitLayers);
+            Collider[] enemies = Physics.OverlapSphere(transform.position, 2 * step * scanRangeMultiplier, hitLayers);
 
             foreach (Collider enemy in enemies)
             {
@@ -62,7 +63,7 @@ public class SonarScanner : MonoBehaviour
                     // spawn gob based on size and relative position
                     GameObject gob = Instantiate(ball, spawn.position, Quaternion.identity);
                     gob.transform.parent = spawn;
-                    gob.transform.localPosition = new Vector3(x, y, z);
+                    gob.transform.localPosition = new Vector3(x / scanRangeMultiplier, y, z / scanRangeMultiplier);
                     gob.transform.localScale = Vector3.one * size;
 
                     hits.Add(enemy.gameObject);

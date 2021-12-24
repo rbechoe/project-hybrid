@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4718844399107481821
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  highlights:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  balance:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-3465271874453207756
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: -0.3
+  xMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-2691605174314316922
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -46,10 +96,12 @@ MonoBehaviour:
   - {fileID: 3376341199859416817}
   - {fileID: 394618757003656643}
   - {fileID: -2691605174314316922}
-  - {fileID: 7824055918992676139}
   - {fileID: 1684907010666810211}
   - {fileID: 1340543514067825524}
   - {fileID: 1395166302197211404}
+  - {fileID: -3465271874453207756}
+  - {fileID: 8504831745880829599}
+  - {fileID: -4718844399107481821}
 --- !u!114 &394618757003656643
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -143,22 +195,22 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 350
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 500
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 3.07
   aperture:
     m_OverrideState: 1
     m_Value: 5.6
@@ -218,7 +270,7 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
---- !u!114 &7824055918992676139
+--- !u!114 &8504831745880829599
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,16 +279,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
-  m_Name: PaniniProjection
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
   active: 1
-  distance:
+  lift:
     m_OverrideState: 1
-    m_Value: 0.689
-  cropToFit:
+    m_Value: {x: 0.9056497, y: 0.9779271, z: 1, w: 0}
+  gamma:
     m_OverrideState: 1
-    m_Value: 0.666
+    m_Value: {x: 1, y: 0.9797735, z: 0.9190949, w: 0}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 0.9126756, y: 0.95399743, z: 1, w: 0}
 --- !u!114 &8508737183899868531
 MonoBehaviour:
   m_ObjectHideFlags: 3
