@@ -76,6 +76,7 @@ Material:
     - _Size1: 2
     - _Speed0: 0.1
     - _Speed1: 0.2
+    - _WaveHeight: 0.4
     - _WaveSize: 3
     m_Colors:
     - _LightDirection: {r: 0, g: 1, b: 0, a: 0}
