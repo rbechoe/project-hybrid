@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17279392, g: 0.21592683, b: 0.2978661, a: 1}
+  m_IndirectSpecularColor: {r: 0.17279428, g: 0.21592702, b: 0.29786676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4155,9 +4155,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878017332722666038, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
+      propertyPath: myShark
+      value: 
+      objectReference: {fileID: 4878017332157340242}
     - target: {fileID: 6464480645004551389, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
       propertyPath: m_Name
       value: shark
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
+--- !u!1 &4878017332157340242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4727193657616264918, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
+  m_PrefabInstance: {fileID: 4878017332157340241}
+  m_PrefabAsset: {fileID: 0}

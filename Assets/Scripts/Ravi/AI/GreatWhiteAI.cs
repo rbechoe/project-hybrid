@@ -14,20 +14,42 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     public float attackRange = 5;
     public float followSpeed = 5f;
 
+    float cabinRange, attackPosRange;
+
     Animator anim;
-    GameObject player;
+    GameObject player, attackPos;
     SharkCart cart;
     public GameObject cartObj;
+
+    FiniteStateMachine FSM;
+    FiniteStateMachine.State patrolState;
+    FiniteStateMachine.State attackState;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        attackPos = GameObject.FindGameObjectWithTag("PlayerAttack");
         cart = cartObj.GetComponent<SharkCart>();
+
+        FSM = new FiniteStateMachine();
+    }
+
+    void PatrolState()
+    {
+
+    }
+
+    void AttackState()
+    {
+
     }
 
     void Update()
     {
+        attackPosRange = Vector3.Distance(transform.position, attackPos.transform.position);
+        cabinRange = Vector3.Distance(transform.position, player.transform.position);
+
         if (attack)
         {
             attack = false;
@@ -41,10 +63,9 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
 
         if (attackCd >= 0) attackCd -= Time.deltaTime;
 
-        // shark attack:
-        // come from behind player
-        // move to forward window
-        // attack player from the front side so that the player can damage the shark
+        // shark goes to attack position and then looks at cabin when doing attack
+        // becomes agressive when not in attack behaviour but when getting attacked
+        // can do attack when attackpos distance is closer than cabin pos and when grace is <= 0
         if (Vector3.Distance(transform.position, player.transform.position) < detectRange)
         {
 
@@ -67,7 +88,6 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
             {
                 transform.position = new Vector3(transform.position.x, 1, transform.position.z);
             }
-
         }
     }
 

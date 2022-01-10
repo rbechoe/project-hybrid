@@ -12,16 +12,20 @@ public class SharkCart : MonoBehaviour
     [HideInInspector]
     public bool moving;
 
+    public GameObject myShark;
+
     // Start is called before the first frame update
     void Start()
     {
         CDC = gameObject.GetComponent<CinemachineDollyCart>();
+
+        if (myShark == null) enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moving)
+        if (Vector3.Distance(transform.position, myShark.transform.position) < 1)
         {
             CDC.m_Speed = moveSpeed;
         }

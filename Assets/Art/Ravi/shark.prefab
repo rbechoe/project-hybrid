@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   moving: 0
+  myShark: {fileID: 0}
 --- !u!1 &6464480645004551389
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +284,6 @@ MonoBehaviour:
   detectRange: 20
   attackRange: 5
   followSpeed: 5
-  rotateSpeed: 5
   cartObj: {fileID: 4878017332722666037}
 --- !u!114 &4878017333353027833
 MonoBehaviour:
