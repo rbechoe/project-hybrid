@@ -17,12 +17,19 @@ public class Bite : BossAction
     {
         Debug.Log("Ik heb nu een hapje genomen. mmm~! :d");
 
+        if (isDone) return true;
+        
         if (!isAnimating)
         {
             StartCoroutine(Attack(transform.position, player.position));
         }
 
-        return isDone;
+        return false;
+    }
+    
+    protected override void Reset()
+    {
+        isDone = false;
     }
     
     private IEnumerator Attack(Vector3 origin, Vector3 target)
@@ -53,10 +60,5 @@ public class Bite : BossAction
 
         isDone = true;
         isAnimating = false;
-    }
-
-    protected override void Reset()
-    {
-        
     }
 }
