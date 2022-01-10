@@ -41,8 +41,6 @@ public class Boss : MonoBehaviour
                 fsm.PopState();
                 fsm.PushState(performAction);
             }
-            
-            Debug.Log("Performing Idle State");
         };
     }
 
@@ -51,26 +49,24 @@ public class Boss : MonoBehaviour
         performAction = (fsm, gameObj) =>
         {
             var action = actions.Peek();
-            if (action.IsDone)
+            
+            var success = action.PerformAction();
+            
+            if (success)
             {
                 action.DoReset();
                 Transfer(action);
 
                 fsm.PopState();
                 fsm.PushState(idle);
-                
-                Debug.Log($"Action {action} completed.");
             }
-
-            var success = action.PerformAction();
-
-            if (!success)
-            {
-                fsm.PopState();
-                fsm.PushState(idle);
-                
-                Debug.Log($"<color=red>Action {action} could not be completed.</color>");
-            }
+            //else
+            //{
+            //    fsm.PopState();
+            //    fsm.PushState(idle);
+            //    
+            //    Debug.Log($"<color=red>Action {action} could not be completed.</color>");
+            //}
         };
     }
 
