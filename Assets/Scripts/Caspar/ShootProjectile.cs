@@ -14,7 +14,7 @@ public class ShootProjectile : BossAction
         for (var i = 0; i < count; i++)
         {
             var dir = (target.position - origin.position).normalized;
-            var instance = Instantiate(projectile, origin.position, Quaternion.LookRotation(dir, Vector3.up));
+            var instance = Instantiate(projectile, origin.position, Quaternion.identity);
             var component = instance.GetComponent<HomingProjectile>();
             if (component != null)
             {
