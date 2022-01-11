@@ -1,92 +1,100 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GreatWhiteAI : MonoBehaviour, IDamagable
 {
-    bool attacking = false;
-
     public int hp = 100;
-    public bool attack;
     public float attackCd;
-    public float graceTime = 20; // attack chance when at zero
+    public float graceTime = 20;
     public float detectRange = 20;
-    public float attackRange = 5;
-    public float followSpeed = 5f;
-
-    float cabinRange, attackPosRange;
 
     Animator anim;
-    GameObject player, attackPos;
+    GameObject player;
     SharkCart cart;
     public GameObject cartObj;
 
+    public Action sharkIdle;
+    public Action[] sharkAttacks;
     FiniteStateMachine FSM;
-    FiniteStateMachine.State patrolState;
-    FiniteStateMachine.State attackState;
+    FiniteStateMachine.State idleState;
+    FiniteStateMachine.State performAction;
+    private readonly Queue<Action> actions = new Queue<Action>();
+
+    bool attacking;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        attackPos = GameObject.FindGameObjectWithTag("PlayerAttack");
         cart = cartObj.GetComponent<SharkCart>();
 
         FSM = new FiniteStateMachine();
+
+        CreateIdleState();
+        CreateActionState();
     }
 
-    void PatrolState()
+    private void CreateIdleState()
     {
-
+        sharkIdle.GetComponent<SharkPatrol>()?.SetParams(anim, cart, cartObj);
+        idleState = (fsm, gameObj) =>
+        {
+            if (actions.Any())
+            {
+                fsm.PopState();
+                fsm.PushState(performAction);
+            }
+        };
+        FSM.PushState(idleState);
     }
 
-    void AttackState()
+    private void CreateActionState()
     {
+        performAction = (fsm, gameObj) =>
+        {
+            var action = actions.Peek();
 
+            var success = action.PerformAction();
+
+            if (success)
+            {
+                action.DoReset();
+                Transfer(action);
+
+                fsm.PopState();
+                fsm.PushState(idleState);
+            }
+        };
+
+        // used to rotate between attack behaviours if there are many
+        foreach (Action action in sharkAttacks)
+        {
+            action.GetComponent<SharkAttack>()?.SetParams(anim, cart, cartObj, this);
+            actions.Enqueue(sharkIdle); // always queue an idle state before an attack state
+            actions.Enqueue(action);
+        }
+    }
+
+    private void Transfer(Action action)
+    {
+        actions.Dequeue();
+        actions.Enqueue(action);
     }
 
     void Update()
     {
-        attackPosRange = Vector3.Distance(transform.position, attackPos.transform.position);
-        cabinRange = Vector3.Distance(transform.position, player.transform.position);
+        FSM.Update(gameObject);
 
-        if (attack)
-        {
-            attack = false;
-            if (attackCd <= 0)
-            {
-                // do attack
-                anim.SetTrigger("Attack");
-                attackCd = 1;
-            }
-        }
-
-        if (attackCd >= 0) attackCd -= Time.deltaTime;
-
-        // shark goes to attack position and then looks at cabin when doing attack
-        // becomes agressive when not in attack behaviour but when getting attacked
-        // can do attack when attackpos distance is closer than cabin pos and when grace is <= 0
-        if (Vector3.Distance(transform.position, player.transform.position) < detectRange)
-        {
-
-        }
-
-        // follow cart
         if (!attacking)
         {
-            cart.moving = true;
-            cart.moveSpeed = followSpeed;
+            if (attackCd >= 0) attackCd -= Time.deltaTime;
 
-            Vector3 targetDir = cart.transform.position - transform.position;
-            float step = followSpeed * Time.deltaTime;
-            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDir);
-
-            // Move forward
-            transform.position += transform.forward * followSpeed * Time.deltaTime;
-            if (transform.position.y <= 1)
+            if (Vector3.Distance(transform.position, player.transform.position) < detectRange && attackCd <= 0)
             {
-                transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+                attacking = true;
+                attackCd = graceTime;
+                Transfer(actions.Peek());
             }
         }
     }
@@ -94,5 +102,11 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         hp -= damage;
+    }
+
+    public void ExitAttack()
+    {
+        attacking = false;
+        Transfer(actions.Peek());
     }
 }

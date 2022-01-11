@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   moving: 0
-  myShark: {fileID: 0}
+  myShark: {fileID: 4727193657616264918}
 --- !u!1 &6464480645004551389
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +265,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3901247, y: 1.4152291, z: 7.740465}
   m_Center: {x: 0.069858246, y: 0.20761442, z: -2.6978424}
+--- !u!114 &2005041471385049290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727193657616264918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964ff3e789477884890cc8dc69661b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followSpeed: 5
+--- !u!114 &3974022208459509767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727193657616264918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b111f621eb0a7db4d9b7c0b7b57b7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAction: 0
+  attackRange: 1
+  followSpeed: 8
 --- !u!114 &4878017333353027829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,13 +306,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  attack: 0
   attackCd: 0
-  graceTime: 20
+  graceTime: 10
   detectRange: 20
-  attackRange: 5
-  followSpeed: 5
   cartObj: {fileID: 4878017332722666037}
+  sharkIdle: {fileID: 2005041471385049290}
+  sharkAttacks:
+  - {fileID: 3974022208459509767}
 --- !u!114 &4878017333353027833
 MonoBehaviour:
   m_ObjectHideFlags: 0

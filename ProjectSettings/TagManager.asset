@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - boid
   - PlayerAttack
+  - SubMarine
   layers:
   - Default
   - TransparentFX

@@ -8,9 +8,7 @@ public class SharkCart : MonoBehaviour
     CinemachineDollyCart CDC;
 
     [HideInInspector]
-    public float moveSpeed;
-    [HideInInspector]
-    public bool moving;
+    float moveSpeed = 5;
 
     public GameObject myShark;
 
@@ -25,13 +23,10 @@ public class SharkCart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, myShark.transform.position) < 1)
-        {
-            CDC.m_Speed = moveSpeed;
-        }
-        else
-        {
-            CDC.m_Speed = 0;
-        }
+        moveSpeed = Mathf.Clamp(moveSpeed, 0, int.MaxValue);
+        CDC.m_Speed = moveSpeed;
+
+        bool nearby = (Vector3.Distance(transform.position, myShark.transform.position) < 5);
+        moveSpeed = (nearby) ? moveSpeed + 1 : moveSpeed - 1;
     }
 }
