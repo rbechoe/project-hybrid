@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Bite : BossAction
+public class Bite : Action
 {
     [SerializeField] private float damage = 1f;
     [SerializeField] private float duration = 1f;

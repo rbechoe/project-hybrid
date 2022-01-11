@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BossAction : MonoBehaviour
+public abstract class Action : MonoBehaviour
 {
     public abstract bool PerformAction();
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class Flashbang : BossAction
+public class Flashbang : Action
 {
     [SerializeField] private Light lantern;
     [SerializeField] private Volume volume;

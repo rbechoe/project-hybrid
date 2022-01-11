@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShootProjectile : BossAction
+public class ShootProjectile : Action
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform origin;

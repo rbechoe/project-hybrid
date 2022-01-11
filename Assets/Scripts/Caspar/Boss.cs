@@ -9,8 +9,8 @@ public class Boss : MonoBehaviour
     private FiniteStateMachine.State idle;
     private FiniteStateMachine.State performAction;
 
-    [SerializeField] private BossAction[] actionPattern;
-    private readonly Queue<BossAction> actions = new();
+    [SerializeField] private Action[] actionPattern;
+    private readonly Queue<Action> actions = new();
 
     private void Start()
     {
@@ -70,7 +70,7 @@ public class Boss : MonoBehaviour
         };
     }
 
-    private void Transfer(BossAction action)
+    private void Transfer(Action action)
     {
         actions.Dequeue();
         actions.Enqueue(action);
