@@ -8,20 +8,25 @@ public class Bite : Action
     [SerializeField] private float duration = 1f;
     [SerializeField] private AnimationCurve curve;
 
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform target;
 
     private bool isAnimating;
     private bool isDone;
 
+    public override bool CanPerform()
+    {
+        var projectile = FindObjectOfType<Projectile>();
+
+        return projectile == null;
+    }
+
     public override bool PerformAction()
     {
-        Debug.Log("Ik heb nu een hapje genomen. mmm~! :d");
-
         if (isDone) return true;
         
         if (!isAnimating)
         {
-            StartCoroutine(Attack(transform.position, player.position));
+            StartCoroutine(Attack(transform.position, target.position));
         }
 
         return false;
