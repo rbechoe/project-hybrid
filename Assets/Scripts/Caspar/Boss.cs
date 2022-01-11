@@ -49,10 +49,18 @@ public class Boss : MonoBehaviour
         performAction = (fsm, gameObj) =>
         {
             var action = actions.Peek();
+
+            if (!action.CanPerform())
+            {
+                Transfer(action);
+
+                fsm.PopState();
+                fsm.PushState(idle);
+            }
             
-            var success = action.PerformAction();
+            var completed = action.PerformAction();
             
-            if (success)
+            if (completed)
             {
                 action.DoReset();
                 Transfer(action);
@@ -60,13 +68,6 @@ public class Boss : MonoBehaviour
                 fsm.PopState();
                 fsm.PushState(idle);
             }
-            //else
-            //{
-            //    fsm.PopState();
-            //    fsm.PushState(idle);
-            //    
-            //    Debug.Log($"<color=red>Action {action} could not be completed.</color>");
-            //}
         };
     }
 

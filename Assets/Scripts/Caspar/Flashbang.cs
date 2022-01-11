@@ -24,8 +24,6 @@ public class Flashbang : Action
     
     public override bool PerformAction()
     {
-        Debug.Log("Throwing a flashbang!!1!!");
-
         if (isDone) return true;
 
         if (!isAnimating)

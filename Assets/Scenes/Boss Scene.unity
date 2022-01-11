@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18375385, g: 0.22825404, b: 0.2994247, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017033932, g: 0.000000025772884, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b946ff760d18a04abf8d2c519cb3c78, type: 3}
       propertyPath: m_Name
-      value: thing
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b946ff760d18a04abf8d2c519cb3c78, type: 3}
       propertyPath: m_Layer
@@ -273,7 +273,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -330,14 +330,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680132253}
-  m_LocalRotation: {x: 0.21810725, y: -0.2521346, z: 0.058441654, w: 0.94097924}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 26.1, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &680132256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,37 +626,6 @@ MonoBehaviour:
     m_DampPosition: 0.5
     m_DampRotation: 0.5
     m_MaintainAim: 1
---- !u!1 &860952028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 860952029}
-  m_Layer: 0
-  m_Name: target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &860952029
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860952028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974872892
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,10 +920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9bfd48836b7fa45924f944212d99a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5468603072576309547, guid: 9abc799218e35164aa5ffbdab4232f08, type: 3}
+  projectiles: []
   origin: {fileID: 1919893274}
   target: {fileID: 1938153168}
-  count: 1
 --- !u!114 &1684566364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,9 +936,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPattern:
+  - {fileID: 1684566365}
+  - {fileID: 1684566367}
   - {fileID: 1684566363}
   - {fileID: 1684566365}
+  - {fileID: 1684566367}
   - {fileID: 1684566366}
+  - {fileID: 1684566367}
 --- !u!114 &1684566365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,7 +1008,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  player: {fileID: 860952029}
+  target: {fileID: 1938153168}
 --- !u!114 &1684566366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,6 +1059,19 @@ MonoBehaviour:
   duration: 3
   targetLanternIntensity: 5000
   targetBloomIntensity: 1000
+--- !u!114 &1684566367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684566357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e988db73e8c9b8e42b9c271e8eec0e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!4 &1701637845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2742715514730938631, guid: 5b946ff760d18a04abf8d2c519cb3c78, type: 3}

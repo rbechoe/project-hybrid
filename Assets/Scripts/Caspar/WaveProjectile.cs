@@ -16,6 +16,8 @@ public class WaveProjectile : Projectile
         child = transform.GetChild(0);
         
         transform.forward = (target.position - transform.position).normalized;
+
+        print("<color=red>Child needs to be removed from the equation pls</color>");
     }
 
     private void FixedUpdate()
@@ -27,5 +29,11 @@ public class WaveProjectile : Projectile
         
         rb.velocity = dir * speed;
         child.localPosition = Vector3.right * Mathf.Sin(Time.time * waveFrequency) * waveAmplitude * easing;
+    }
+
+    private void LateUpdate()
+    {
+        var rot = turnSpeed * Time.deltaTime;
+        child.Rotate(rot, rot, rot, Space.Self);
     }
 }

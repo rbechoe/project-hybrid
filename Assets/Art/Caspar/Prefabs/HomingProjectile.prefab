@@ -130,3 +130,4 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 2
   turnSpeed: 0.04
+  health: 100
