@@ -13,9 +13,8 @@ public class ShootProjectile : Action
 
         for (var i = 0; i < count; i++)
         {
-            var dir = (target.position - origin.position).normalized;
             var instance = Instantiate(projectile, origin.position, Quaternion.identity);
-            var component = instance.GetComponent<HomingProjectile>();
+            var component = instance.GetComponent<Projectile>();
             if (component != null)
             {
                 component.target = this.target;
