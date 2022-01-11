@@ -21,13 +21,35 @@ public class SubController : MonoBehaviour
 
     public CinemachineDollyCart CDC;
 
+    public GameObject turret, bulletSpawn;
+    float turretX, turretY;
+    float aimSpeed = 20;
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space)) // TODO toggle move with M
         {
             if (currentDiveSpeed < maxDiveSpeed) currentDiveSpeed += diveSpeedIncrement * Time.deltaTime;
             graceFloat = graceFloatReset;
         }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            turretX += aimSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            turretX -= aimSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            turretY -= aimSpeed * Time.deltaTime * 1.5f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            turretY += aimSpeed * Time.deltaTime * 1.5f;
+        }
+        turret.transform.localEulerAngles = new Vector3(turretX, turretY, 0);
 
         graceFloat -= Time.deltaTime;
         if (graceFloat < 0 && currentDiveSpeed > 0) currentDiveSpeed -= waterResistance * Time.deltaTime;
