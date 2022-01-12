@@ -105,6 +105,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         if (hp <= 0)
         {
             gameObject.GetComponent<EnemyInfo>().dead = true;
+            anim.SetTrigger("Dead");
             Destroy(this);
         }
     }

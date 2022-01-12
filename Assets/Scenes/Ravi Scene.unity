@@ -1570,6 +1570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878017333353027829, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
+      propertyPath: hp
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6464480645004551389, guid: 8fcbfbcbdbecaae4388d2d9f7681afe7, type: 3}
       propertyPath: m_Name
       value: shark (1)
