@@ -24,7 +24,7 @@ public class SubController : MonoBehaviour
 
     public GameObject turret, bulletSpawn, projectile;
     float turretX, turretY;
-    float aimSpeed = 20;
+    float aimSpeed = 40;
     float shootCooldown = 0;
 
     bool diving;
@@ -68,7 +68,7 @@ public class SubController : MonoBehaviour
     {
         if (shootCooldown <= 0)
         {
-            // TODO shoot projectile
+            Instantiate(projectile, bulletSpawn.transform.position, turret.transform.rotation);
             shootCooldown = shootCooldownReset;
         }
     }

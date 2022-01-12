@@ -102,6 +102,11 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        if (hp <= 0)
+        {
+            gameObject.GetComponent<EnemyInfo>().dead = true;
+            Destroy(this);
+        }
     }
 
     public void ExitAttack()
