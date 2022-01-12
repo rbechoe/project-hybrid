@@ -2,38 +2,42 @@ using UnityEngine;
 
 public class WaveProjectile : Projectile
 {
-    [SerializeField] private float waveAmplitude = 10f;
-    [SerializeField] private float waveFrequency = 1f;
+    [SerializeField] protected float waveAmplitude = 10f;
+    [SerializeField] protected float waveFrequency = 1f;
 
-    [SerializeField] private float easingDistance = 5f;
+    [SerializeField] protected float easingDistance = 5f;
 
-    private Transform child;
+    protected float distance;
+    protected float easing;
+    protected Vector3 dir;
 
-    protected override void Start()
+    private Vector3 force;
+
+    protected override void OnStart()
     {
-        base.Start();
-
-        child = transform.GetChild(0);
-        
         transform.forward = (target.position - transform.position).normalized;
-
-        print("<color=red>Child needs to be removed from the equation pls</color>");
     }
 
-    private void FixedUpdate()
+    protected override void Update()
     {
-        var distance = Vector3.Distance(transform.position, target.position);
-        var easing = distance < easingDistance ? Mathf.InverseLerp(0, easingDistance, distance) : 1;
+        base.Update();
         
-        var dir = (target.position - transform.position).normalized;
+        distance = Vector3.Distance(transform.position, target.position);
+        easing = distance < easingDistance ? Mathf.InverseLerp(0, easingDistance, distance) : 1;
         
-        rb.velocity = dir * speed;
-        child.localPosition = Vector3.right * Mathf.Sin(Time.time * waveFrequency) * waveAmplitude * easing;
-    }
+        dir = (target.position - transform.position).normalized;
 
+        rb.position += CalculateForce() * Time.deltaTime;
+    }
+    
     private void LateUpdate()
     {
         var rot = turnSpeed * Time.deltaTime;
-        child.Rotate(rot, rot, rot, Space.Self);
+        transform.Rotate(rot, rot, rot);
+    }
+
+    protected virtual Vector3 CalculateForce()
+    {
+        return Vector3.zero;
     }
 }

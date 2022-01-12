@@ -6,12 +6,30 @@ public class Projectile : MonoBehaviour, IDamagable
     [SerializeField] protected float speed = 1f;
     [SerializeField] protected float turnSpeed = 1f;
     [Space] [SerializeField] private int health;
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float damageRange = 1f;
 
     protected Rigidbody rb;
 
-    protected virtual void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        OnStart();
+    }
+
+    protected virtual void Update()
+    {
+        if (Vector3.Distance(transform.position, target.position) < damageRange)
+        {
+            var component = GetComponent<GameController>();
+
+            if (component != null)
+            {
+                component.TakeDamage(damage);
+            }
+            
+            Die();
+        }
     }
 
     public void TakeDamage(int damage)
@@ -20,7 +38,17 @@ public class Projectile : MonoBehaviour, IDamagable
 
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    protected virtual void Die()
+    {
+        Destroy(this.gameObject);
+    }
+    
+    protected virtual void OnStart()
+    {
+        
     }
 }

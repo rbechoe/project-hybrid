@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bite : Action
 {
-    [SerializeField] private float damage = 1f;
+    [SerializeField] private int damage = 10;
     [SerializeField] private float duration = 1f;
     [SerializeField] private AnimationCurve curve;
 
@@ -55,7 +55,13 @@ public class Bite : Action
             {
                 if (Math.Abs(curve.Evaluate(percent) - 1) < 0.05f)
                 {
-                    //Attack or something
+                    var component = GetComponent<GameController>();
+
+                    if (component != null)
+                    {
+                        component.TakeDamage(damage);
+                    }
+                    
                     hasAttacked = true;
                 }
             }
