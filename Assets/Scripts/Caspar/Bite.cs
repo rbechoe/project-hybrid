@@ -55,12 +55,7 @@ public class Bite : Action
             {
                 if (Math.Abs(curve.Evaluate(percent) - 1) < 0.05f)
                 {
-                    var component = GetComponent<GameController>();
-
-                    if (component != null)
-                    {
-                        component.TakeDamage(damage);
-                    }
+                    EventSystem<int>.InvokeEvent(EventType.DAMAGE_PLAYER, damage);
                     
                     hasAttacked = true;
                 }

@@ -21,13 +21,8 @@ public class Projectile : MonoBehaviour, IDamagable
     {
         if (Vector3.Distance(transform.position, target.position) < damageRange)
         {
-            var component = GetComponent<GameController>();
+            EventSystem<int>.InvokeEvent(EventType.DAMAGE_PLAYER, damage);
 
-            if (component != null)
-            {
-                component.TakeDamage(damage);
-            }
-            
             Die();
         }
     }
