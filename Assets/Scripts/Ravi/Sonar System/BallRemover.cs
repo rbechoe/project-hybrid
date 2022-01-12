@@ -8,11 +8,12 @@ public class BallRemover : MonoBehaviour
     float aliveTimer;
     float aliveReset = 1;
 
+    public GameObject matObj;
     Material mat;
 
     private void Start()
     {
-        mat = gameObject.GetComponent<MeshRenderer>().material;
+        mat = matObj.GetComponent<MeshRenderer>().material;
         aliveTimer = aliveReset;
     }
 

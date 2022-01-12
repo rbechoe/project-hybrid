@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class SubController : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class SubController : MonoBehaviour
     float aimSpeed = 40;
     float shootCooldown = 0;
 
+    public Texture2D blueImg, redImg;
+    public Texture2D blueSmallImg, redSmallImg;
+    public RawImage mainUI, sideAUI, sideBUI;
+
     bool diving;
 
     private void Start()
@@ -37,6 +42,7 @@ public class SubController : MonoBehaviour
         EventSystem.AddListener(EventType.AIM_UP, AimUp);
         EventSystem.AddListener(EventType.AIM_DOWN, AimDown);
         EventSystem.AddListener(EventType.SHOOT, Shoot);
+        EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
     }
 
     void ToggleDive()
@@ -71,6 +77,22 @@ public class SubController : MonoBehaviour
             Instantiate(projectile, bulletSpawn.transform.position, turret.transform.rotation);
             shootCooldown = shootCooldownReset;
         }
+    }
+
+    void GetHit(int damage)
+    {
+        StartCoroutine(HitEffect());
+    }
+
+    IEnumerator HitEffect()
+    {
+        mainUI.texture = redImg;
+        sideAUI.texture = redSmallImg;
+        sideBUI.texture = redSmallImg;
+        yield return new WaitForSeconds(0.5f);
+        mainUI.texture = blueImg;
+        sideAUI.texture = blueSmallImg;
+        sideBUI.texture = blueSmallImg;
     }
 
     void Update()
