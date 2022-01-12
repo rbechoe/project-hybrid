@@ -7,7 +7,6 @@ public class SharkAttack : Action
     public bool inAction;
     float attackRange = 2;
     float followSpeed = 8f;
-    // TODO update cart speed so that it is always infront of the shark whenever moving into attack state
 
     float cabinRange, attackPosRange;
 
@@ -46,16 +45,6 @@ public class SharkAttack : Action
     
     IEnumerator Attacking()
     {
-        // swim to front of cabin in order to actually perform the attack
-        // follow cart as long as front of cabin is further than player position, speed can be increased
-
-
-        // shark goes to attack position and then looks at cabin when doing attack
-        // becomes agressive when not in attack behaviour but when getting attacked
-        // can do attack when attackpos distance is closer than cabin pos and when grace is <= 0
-        // switch idle (patrol) state to attack state
-        // attack state contains entire attack behaviour
-
         inAction = true;
         int waitCount = 0;
 
@@ -94,8 +83,7 @@ public class SharkAttack : Action
                     if (waitCount > 30) // wait 30 updates before attacking player
                     {
                         anim.SetTrigger("Attack");
-                        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().TakeDamage(1);
-                        Debug.Log("did attack");
+                        EventSystem<int>.InvokeEvent(EventType.DAMAGE_PLAYER, 1);
                         yield return new WaitForSeconds(1);
                         Reset();
                     }

@@ -11,6 +11,7 @@ public class SubController : MonoBehaviour
     public float waterResistance = 0.2f;
     public float graceFloat = 2f;
     public float graceFloatReset = 2f;
+    public float shootCooldownReset = 1f;
 
     public AudioSource cabinSFX;
     public AudioSource localSFX;
@@ -24,32 +25,63 @@ public class SubController : MonoBehaviour
     public GameObject turret, bulletSpawn;
     float turretX, turretY;
     float aimSpeed = 20;
+    float shootCooldown = 0;
+
+    bool diving;
+
+    private void Start()
+    {
+        EventSystem.AddListener(EventType.TOGGLE_DIVE, ToggleDive);
+        EventSystem.AddListener(EventType.AIM_LEFT, AimLeft);
+        EventSystem.AddListener(EventType.AIM_RIGHT, AimRight);
+        EventSystem.AddListener(EventType.AIM_UP, AimUp);
+        EventSystem.AddListener(EventType.AIM_DOWN, AimDown);
+        EventSystem.AddListener(EventType.SHOOT, Shoot);
+    }
+
+    void ToggleDive()
+    {
+        diving = !diving;
+    }
+
+    void AimLeft()
+    {
+        turretY -= aimSpeed * Time.deltaTime * 1.5f;
+    }
+
+    void AimRight()
+    {
+        turretY += aimSpeed * Time.deltaTime * 1.5f;
+    }
+
+    void AimUp()
+    {
+        turretX -= aimSpeed * Time.deltaTime;
+    }
+
+    void AimDown()
+    {
+        turretX += aimSpeed * Time.deltaTime;
+    }
+
+    void Shoot()
+    {
+        if (shootCooldown <= 0)
+        {
+            // shoot projectile
+            shootCooldown = shootCooldownReset;
+        }
+    }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)) // TODO toggle move with M
+        turret.transform.localEulerAngles = new Vector3(turretX, turretY, 0);
+
+        if (diving)
         {
             if (currentDiveSpeed < maxDiveSpeed) currentDiveSpeed += diveSpeedIncrement * Time.deltaTime;
             graceFloat = graceFloatReset;
         }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            turretX += aimSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            turretX -= aimSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            turretY -= aimSpeed * Time.deltaTime * 1.5f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            turretY += aimSpeed * Time.deltaTime * 1.5f;
-        }
-        turret.transform.localEulerAngles = new Vector3(turretX, turretY, 0);
 
         graceFloat -= Time.deltaTime;
         if (graceFloat < 0 && currentDiveSpeed > 0) currentDiveSpeed -= waterResistance * Time.deltaTime;
@@ -57,6 +89,8 @@ public class SubController : MonoBehaviour
         currentDiveSpeed = Mathf.Clamp(currentDiveSpeed, 0, maxDiveSpeed);
 
         CDC.m_Speed = currentDiveSpeed;
+
+        if (shootCooldown > 0) shootCooldown -= Time.deltaTime;
     }
 
     public void StartDive()
