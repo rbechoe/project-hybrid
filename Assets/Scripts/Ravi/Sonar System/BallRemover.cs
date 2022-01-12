@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallRemover : MonoBehaviour
 {
-    bool enabled = false;
     bool fading = false;
     float aliveTimer;
     float aliveReset = 1;
@@ -13,34 +12,30 @@ public class BallRemover : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
         mat = gameObject.GetComponent<MeshRenderer>().material;
         aliveTimer = aliveReset;
     }
 
     void Update()
     {
-        if (enabled)
+        aliveTimer -= Time.deltaTime;
+
+        if (fading)
         {
             aliveTimer -= Time.deltaTime;
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - 1 * Time.deltaTime);
 
-            if (fading)
+            if (aliveTimer <= 0)
             {
-                aliveTimer -= Time.deltaTime;
-                mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - 1 * Time.deltaTime);
-
-                if (aliveTimer <= 0)
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
-            else
+        }
+        else
+        {
+            if (aliveTimer <= 0)
             {
-                if (aliveTimer <= 0)
-                {
-                    fading = true;
-                    aliveTimer = aliveReset;
-                }
+                fading = true;
+                aliveTimer = aliveReset;
             }
         }
     }

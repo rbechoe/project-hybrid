@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     public int size = 2;
+    public bool dead = false;
 }

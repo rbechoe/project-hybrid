@@ -22,7 +22,7 @@ public class SubController : MonoBehaviour
 
     public CinemachineDollyCart CDC;
 
-    public GameObject turret, bulletSpawn;
+    public GameObject turret, bulletSpawn, projectile;
     float turretX, turretY;
     float aimSpeed = 20;
     float shootCooldown = 0;
@@ -68,7 +68,7 @@ public class SubController : MonoBehaviour
     {
         if (shootCooldown <= 0)
         {
-            // shoot projectile
+            // TODO shoot projectile
             shootCooldown = shootCooldownReset;
         }
     }

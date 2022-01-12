@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
+  dead: 1
 --- !u!65 &236192692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -546,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
+  dead: 1
 --- !u!65 &246281855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -657,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 5
+  dead: 0
 --- !u!65 &265457997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -867,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
+  dead: 0
 --- !u!65 &359560532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1353,6 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
+  dead: 0
 --- !u!65 &625675216
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2157,6 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 5
+  dead: 1
 --- !u!65 &1057932959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3268,6 +3274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
+  dead: 0
 --- !u!1 &1545435746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
+  dead: 0
 --- !u!65 &1545435748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3772,6 +3780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 3
+  dead: 1
 --- !u!65 &1916468742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3883,6 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
+  dead: 0
 --- !u!65 &2009654413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4169,6 +4179,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482708490441389185, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 482708490441389185, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 830039192837170894, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
       propertyPath: m_TagString
       value: SubMarine
@@ -4229,6 +4247,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6036845998221407389, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
+      propertyPath: threat
+      value: 
+      objectReference: {fileID: 7443528796011488449, guid: d9a820849e08b504bafd32389a79474e, type: 3}
+    - target: {fileID: 6036845998221407389, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
+      propertyPath: nothreat
+      value: 
+      objectReference: {fileID: 7443528796011488449, guid: 6de59f4ca0a2aa54ab6cc687948a22ea, type: 3}
     - target: {fileID: 7968078295448509771, guid: 5fd78fb4b8b2a4d29ab579eadac75291, type: 3}
       propertyPath: m_Name
       value: playersetup
