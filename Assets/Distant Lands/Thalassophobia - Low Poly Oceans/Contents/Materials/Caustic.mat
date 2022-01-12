@@ -67,10 +67,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CausticIntensity: 1.5
-    - _CausticScale: 2
+    - _CausticIntensity: 10
+    - _CausticScale: 1
     - _CausticSpeed: 0.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -91,3 +92,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
