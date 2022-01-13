@@ -13,17 +13,8 @@ public class GameController : MonoBehaviour, IDamagable
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, TakeDamage);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         health -= damage;
-        // UPDATE UI
-        // PUSH SFX
-        // other attack related logic
     }
 }
