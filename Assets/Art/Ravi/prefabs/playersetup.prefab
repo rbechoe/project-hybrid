@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f844c040c648524da3f7c5b4d67efed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDiveSpeed: 4
+  maxDiveSpeed: 8
   diveSpeedIncrement: 0.5
   currentDiveSpeed: 0
   waterResistance: 1
