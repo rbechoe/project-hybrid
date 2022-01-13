@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766252705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06, z: 2}
+  m_LocalPosition: {x: 0, y: -0.236, z: 2}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   - {fileID: 5468603072576309547, guid: 9abc799218e35164aa5ffbdab4232f08, type: 3}
   origin: {fileID: 1919893274}
   target: {fileID: 1938153168}
+  fireRate: 2
 --- !u!114 &1684566364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,13 +1060,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPattern:
+  - {fileID: 1684566365}
   - {fileID: 1684566370}
   - {fileID: 1684566367}
+  - {fileID: 1684566371}
+  - {fileID: 1684566367}
   - {fileID: 1684566363}
-  - {fileID: 1684566367}
-  - {fileID: 1684566366}
-  - {fileID: 1684566367}
   - {fileID: 1684566365}
+  - {fileID: 1684566367}
+  - {fileID: 1684566371}
+  - {fileID: 1684566367}
+  - {fileID: 1684566371}
+  - {fileID: 1684566366}
   - {fileID: 1684566367}
 --- !u!114 &1684566365
 MonoBehaviour:
@@ -1133,6 +1139,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   target: {fileID: 1938153168}
+  maxAttackRange: 20
 --- !u!114 &1684566366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,7 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988db73e8c9b8e42b9c271e8eec0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 4
+  duration: 3
 --- !u!65 &1684566368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1237,6 +1244,20 @@ MonoBehaviour:
   swimSpeed: 5
   swimDistance: {x: 10, y: 30}
   cdc: {fileID: 571322592}
+--- !u!114 &1684566371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684566357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9186a15ab70b36641a03803f8ed033aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1938153168}
+  turnSpeed: 4
 --- !u!4 &1701637845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2742715514730938631, guid: 5b946ff760d18a04abf8d2c519cb3c78, type: 3}

@@ -49,18 +49,10 @@ public class Boss : MonoBehaviour
         performAction = (fsm, gameObj) =>
         {
             var action = actions.Peek();
-
-            if (!action.CanPerform())
-            {
-                Transfer(action);
-
-                fsm.PopState();
-                fsm.PushState(idle);
-            }
             
-            var completed = action.PerformAction();
+            var finished = !action.CanPerform() || action.PerformAction();
             
-            if (completed)
+            if (finished)
             {
                 action.DoReset();
                 Transfer(action);
