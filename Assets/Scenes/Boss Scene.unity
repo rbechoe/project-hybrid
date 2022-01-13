@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.17855075, g: 0.21759847, b: 0.27118117, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -407,14 +407,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680132253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.12602584, y: 0, z: 0, w: 0.992027}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.48, y: 0, z: 0}
 --- !u!114 &680132256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 293280561}
     m_Source: {fileID: 806542359}
-    m_DampPosition: 0.5
+    m_DampPosition: 0
     m_DampRotation: 0.5
     m_MaintainAim: 1
 --- !u!1 &974872892
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 1545903355}
     m_Source: {fileID: 1375988980}
-    m_DampPosition: 0.5
+    m_DampPosition: 0
     m_DampRotation: 0.5
     m_MaintainAim: 1
 --- !u!1 &1360396628
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 400023961}
     m_Source: {fileID: 357545977}
-    m_DampPosition: 0.5
+    m_DampPosition: 0
     m_DampRotation: 0.5
     m_MaintainAim: 1
 --- !u!4 &1375988980 stripped
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 357545977}
     m_Source: {fileID: 1545903355}
-    m_DampPosition: 0.5
+    m_DampPosition: 0
     m_DampRotation: 0.5
     m_MaintainAim: 1
 --- !u!1 &1918764598
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 806542359}
     m_Source: {fileID: 400023961}
-    m_DampPosition: 0.5
+    m_DampPosition: 0
     m_DampRotation: 0.5
     m_MaintainAim: 1
 --- !u!1 &1919893273
