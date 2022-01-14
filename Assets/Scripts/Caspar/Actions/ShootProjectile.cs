@@ -15,7 +15,7 @@ public class ShootProjectile : Action
             component.target = this.target;
         }
 
-        return false;
+        return true;
     }
 
     protected override void Reset()
