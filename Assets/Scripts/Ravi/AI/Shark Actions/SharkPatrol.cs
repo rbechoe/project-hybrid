@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SharkPatrol : Action
 {
-    float followSpeed = 5f;
+    float followSpeed = 20f;
 
     SharkCart cart;
 

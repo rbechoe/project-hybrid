@@ -58,6 +58,8 @@ public class EnemyScanner : MonoBehaviour
             {
                 z -= (transform.parent.position.z - enemy.transform.position.z) / 2f - size / 2f;
             }
+            x = x * scanRangeMultiplier;
+            z = z * scanRangeMultiplier;
 
             // spawn gob based on size and relative position
             Vector3 spawnPos = new Vector3(10000 + x, y, 10000 + z);
