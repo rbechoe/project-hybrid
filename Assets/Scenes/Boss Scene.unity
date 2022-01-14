@@ -1024,7 +1024,7 @@ MonoBehaviour:
   - {fileID: 5468603072576309547, guid: 9abc799218e35164aa5ffbdab4232f08, type: 3}
   origin: {fileID: 1919893274}
   target: {fileID: 1938153168}
-  fireRate: 2
+  fireRate: 0.5
 --- !u!114 &1684566364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,19 +1038,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPattern:
-  - {fileID: 1684566372}
-  - {fileID: 1684566373}
   - {fileID: 1684566365}
   - {fileID: 1684566370}
   - {fileID: 1684566367}
-  - {fileID: 1684566371}
   - {fileID: 1684566367}
   - {fileID: 1684566363}
   - {fileID: 1684566365}
   - {fileID: 1684566367}
-  - {fileID: 1684566371}
   - {fileID: 1684566367}
-  - {fileID: 1684566371}
   - {fileID: 1684566366}
   - {fileID: 1684566367}
 --- !u!114 &1684566365
@@ -1119,7 +1114,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   target: {fileID: 1938153168}
-  maxAttackRange: 20
+  maxAttackRange: 10
 --- !u!114 &1684566366
 MonoBehaviour:
   m_ObjectHideFlags: 0
