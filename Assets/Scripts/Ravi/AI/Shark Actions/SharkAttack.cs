@@ -5,8 +5,8 @@ using UnityEngine;
 public class SharkAttack : Action
 {
     public bool inAction;
-    float attackRange = 2;
-    float followSpeed = 8f;
+    float attackRange = 10;
+    float followSpeed = 25f;
 
     float cabinRange, attackPosRange;
 
@@ -52,7 +52,7 @@ public class SharkAttack : Action
         {
             if (cabinRange < attackPosRange)
             {
-                followSpeed = 5;
+                followSpeed = 20;
 
                 Vector3 targetDir = cart.transform.position - transform.position;
                 float step = followSpeed * Time.deltaTime;
@@ -68,7 +68,7 @@ public class SharkAttack : Action
             }
             else
             {
-                followSpeed = 8;
+                followSpeed = 25;
 
                 if (Vector3.Distance(transform.position, attackPos.transform.position) < attackRange)
                 {

@@ -26,7 +26,7 @@ public class SharkCart : MonoBehaviour
         moveSpeed = Mathf.Clamp(moveSpeed, 0, int.MaxValue);
         CDC.m_Speed = moveSpeed;
 
-        bool nearby = (Vector3.Distance(transform.position, myShark.transform.position) < 5);
-        moveSpeed = (nearby) ? moveSpeed + 1 : moveSpeed - 1;
+        bool nearby = (Vector3.Distance(transform.position, myShark.transform.position) < 10);
+        moveSpeed = (nearby) ? moveSpeed + 2 : moveSpeed - 2;
     }
 }
