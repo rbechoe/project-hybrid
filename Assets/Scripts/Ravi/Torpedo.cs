@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Torpedo : MonoBehaviour
 {
-    float speed = 0.1f;
-    float maxSpeed = 10;
+    float speed = 1f;
+    float maxSpeed = 20;
     float lifeTime = 10;
 
     void Start()
