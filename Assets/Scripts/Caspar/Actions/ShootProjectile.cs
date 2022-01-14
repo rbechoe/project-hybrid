@@ -2,32 +2,17 @@ using UnityEngine;
 
 public class ShootProjectile : Action
 {
-    [SerializeField] private GameObject[] projectiles;
+    [SerializeField] private GameObject projectile;
     [SerializeField] private Transform origin;
     [SerializeField] private Transform target;
-    [SerializeField] private float fireRate = 0.5f;
-
-    private float nextFire;
-    private int index;
 
     public override bool PerformAction()
     {
-        if (Time.time > nextFire)
+        var instance = Instantiate(projectile, origin.position, Quaternion.identity);
+        var component = instance.GetComponent<Projectile>();
+        if (component != null)
         {
-            nextFire = Time.time + fireRate;
-            
-            var instance = Instantiate(projectiles[index], origin.position, Quaternion.identity);
-            var component = instance.GetComponent<Projectile>();
-            if (component != null)
-            {
-                component.target = this.target;
-            }
-
-            if (index < projectiles.Length - 1)
-            {
-                index++;
-            }
-            else return true;
+            component.target = this.target;
         }
 
         return false;
@@ -35,7 +20,6 @@ public class ShootProjectile : Action
 
     protected override void Reset()
     {
-        nextFire = 0;
-        index = 0;
+        
     }
 }
