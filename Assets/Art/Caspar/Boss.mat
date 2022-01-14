@@ -61,6 +61,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveHeight: 0.2
-    - _fadeAmount: 0
+    - _fadeAmount: 1
     m_Colors: []
   m_BuildTextureStacks: []

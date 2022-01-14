@@ -1018,11 +1018,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPattern:
+  - {fileID: 1684566372}
   - {fileID: 1684566365}
   - {fileID: 1684566370}
   - {fileID: 1684566367}
   - {fileID: 1684566367}
-  - {fileID: 0}
   - {fileID: 1684566365}
   - {fileID: 1684566367}
   - {fileID: 1684566367}
