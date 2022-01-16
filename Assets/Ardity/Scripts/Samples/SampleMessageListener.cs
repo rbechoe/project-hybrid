@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /**
  * When creating your message listeners you need to implement these two methods:
@@ -21,6 +22,7 @@ public class SampleMessageListener : MonoBehaviour
     {
         Debug.Log("Message arrived: " + msg);
     }
+
 
     // Invoked when a connect/disconnect event occurs. The parameter 'success'
     // will be 'true' upon connection, and 'false' upon disconnection or
