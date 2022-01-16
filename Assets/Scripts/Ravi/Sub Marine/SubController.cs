@@ -13,8 +13,7 @@ public class SubController : MonoBehaviour
     public float graceFloat = 2f;
     public float graceFloatReset = 2f;
     public float shootCooldownReset = 1f;
-
-    public AudioSource cabinSFX;
+    
     public AudioSource localSFX;
     public AudioSource music;
     public AudioSource ambient;
@@ -119,17 +118,25 @@ public class SubController : MonoBehaviour
     {
         music.Play();
         ambient.Play();
-        cabinSFX.Play();
-        localSFX.PlayOneShot(diveSFX);
     }
 
-    public void UpdateSFX(AudioClip clip)
+    public void LocalSFXOneShot(AudioClip clip)
     {
         localSFX.PlayOneShot(clip);
     }
 
-    public void UpdateCabin(AudioClip clip)
+    public void SetDiveSpeed(float speed)
     {
-        cabinSFX.PlayOneShot(clip);
+        maxDiveSpeed = speed;
+    }
+
+    public void UpdateMusic(AudioClip music)
+    {
+        this.music.clip = music;
+    }
+
+    public void UpdateAmbient(AudioClip ambient)
+    {
+        this.ambient.clip = ambient;
     }
 }
