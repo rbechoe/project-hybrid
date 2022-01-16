@@ -192,7 +192,7 @@ MonoBehaviour:
   graceFloat: 2
   graceFloatReset: 2
   shootCooldownReset: 1
-  cabinSFX: {fileID: 830039194721675928}
+  cabinAmbience: {fileID: 0}
   localSFX: {fileID: 830039192727729243}
   music: {fileID: 830039193774339141}
   ambient: {fileID: 830039192863735682}
