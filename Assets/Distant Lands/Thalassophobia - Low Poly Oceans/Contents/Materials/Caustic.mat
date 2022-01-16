@@ -70,7 +70,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CausticIntensity: 10
+    - _CausticIntensity: 6
     - _CausticScale: 1
     - _CausticSpeed: 0.1
     - _Cutoff: 0.5

@@ -26,8 +26,9 @@ public class EnemyScanner : MonoBehaviour
             }
         }
 
-        transform.parent.localEulerAngles += Vector3.up * 100 * Time.deltaTime;
-        radarObj.transform.localEulerAngles = transform.parent.localEulerAngles;
+        transform.parent.localEulerAngles += Vector3.up * (100 * Time.deltaTime);
+        var spriteRotation = Vector3.back * transform.parent.localEulerAngles.y;
+        radarObj.transform.localEulerAngles = spriteRotation;
     }
 
     private void OnCollisionEnter(Collision collision)
