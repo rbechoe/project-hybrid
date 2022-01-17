@@ -49,14 +49,18 @@ public class Fish
         Collider[] neighbours = Physics.OverlapSphere(position, maxNeighbourDistance, LM);
         foreach (Collider neighbour in neighbours)
         {
-            if (neighbour.CompareTag("fish"))
+            try
             {
-                fishForce -= (manager.fishInstances[int.Parse(neighbour.name)].position - position);
+                if (neighbour.CompareTag("fish")) // can be from different school!
+                {
+                    fishForce -= (manager.fishInstances[int.Parse(neighbour.name)].position - position);
+                }
+                else
+                {
+                    fishForce -= neighbour.transform.position - position;
+                }
             }
-            else
-            {
-                fishForce -= neighbour.transform.position - position;
-            }
+            catch { }
         }
 
         return fishDirection + fishVelocity + fishForce;

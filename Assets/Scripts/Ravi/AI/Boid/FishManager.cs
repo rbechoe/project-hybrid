@@ -22,8 +22,6 @@ public class FishManager : MonoBehaviour
     [SerializeField]
     private GameObject[] fishPrefabs;
     [SerializeField]
-    private GameObject targetObject;
-    [SerializeField]
     private GameObject centerMass;
     [SerializeField]
     private LayerMask layerMask;
@@ -55,6 +53,7 @@ public class FishManager : MonoBehaviour
     public float cartSpeed = 2;
     private float swimTime = 5f;
     private float pauseTime = 5f;
+    private GameObject targetObject;
 
     //---------------extra settings for the game designer------
     [Header("Extra settings")]
@@ -66,6 +65,7 @@ public class FishManager : MonoBehaviour
 
     void Start()
     {
+        targetObject = gameObject;
         CDC = gameObject.GetComponent<CinemachineDollyCart>();
         Vector3 posTotal = Vector3.zero;
         GameObject parentObj = new GameObject();
