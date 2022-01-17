@@ -11,8 +11,15 @@ public class Bite : Action
     [SerializeField] private Transform target;
     [SerializeField] private float maxAttackRange = 10;
 
+    private Animator animator;
+
     private bool isAnimating;
     private bool isDone;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public override bool CanPerform()
     {
@@ -28,6 +35,8 @@ public class Bite : Action
 
         if (!isAnimating)
         {
+            animator.SetTrigger("attack");
+            animator.SetFloat("attackSpeedMultiplier", 1 / duration);
             StartCoroutine(Attack(transform.position, target.position));
         }
 
