@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1321963544950085252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321963544950085255}
+  m_Layer: 0
+  m_Name: fish setup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321963544950085255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963544950085252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 932.4995, y: 136.49657, z: 667.25226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1321963546638424140}
+  - {fileID: 1321963545760872825}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1321963545254938369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321963545254938368}
+  m_Layer: 0
+  m_Name: center mass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321963545254938368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963545254938369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1321963546638424140}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1321963545760872830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321963545760872825}
+  - component: {fileID: 1321963545760872824}
+  m_Layer: 0
+  m_Name: fish track
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321963545760872825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963545760872830}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.192505, y: -1.7344666, z: 5.165344}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1321963544950085255}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321963545760872824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963545760872830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 1
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: -5}
+    roll: 0
+  - position: {x: 0, y: 0, z: 5}
+    roll: 0
+  - position: {x: 8.557861, y: 0, z: 6.211609}
+    roll: 0
+  - position: {x: 9.505066, y: 0, z: -3.5319214}
+    roll: 0
+  - position: {x: 3.2923584, y: 0, z: -9.2994995}
+    roll: 0
+--- !u!1 &1321963546638423986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321963546638424140}
+  - component: {fileID: 1321963546638424141}
+  - component: {fileID: 1321963546638424143}
+  m_Layer: 0
+  m_Name: tropical fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321963546638424140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963546638423986}
+  m_LocalRotation: {x: -0, y: -0.13015425, z: -0, w: 0.99149376}
+  m_LocalPosition: {x: -3.192505, y: -1.7344666, z: 0.16534424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1321963545254938368}
+  m_Father: {fileID: 1321963544950085255}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321963546638424141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963546638423986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c9625a576d860428a9fb351a004836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  averagePosition: {x: 0, y: 0, z: 0}
+  totalPosition: {x: 0, y: 0, z: 0}
+  totalVelocity: {x: 0, y: 0, z: 0}
+  fishPrefabs:
+  - {fileID: 2761360331121785948, guid: 580c0192d54ab1745979d81e47a922d1, type: 3}
+  - {fileID: 9105889672977847695, guid: 6fbea88a56edd1842b9912fb70048bf8, type: 3}
+  - {fileID: 1379421855613176927, guid: 64b2d268dbc2b25488d3172713573f23, type: 3}
+  - {fileID: 2654420678614324526, guid: 3eb4a265a6f9cf647b64d00eee1b69ef, type: 3}
+  - {fileID: 7004357417801736528, guid: 8b99bcc107e9f2441b343a50a78476bc, type: 3}
+  - {fileID: 6731850595333153707, guid: 2e6513c0914a5354682c85fa81a7064a, type: 3}
+  - {fileID: 488859392466432245, guid: 6b75b60353222e646ae3139ce965609e, type: 3}
+  - {fileID: 3037957878805287611, guid: bf3fc60bc61b47a41aea0b13c4339595, type: 3}
+  - {fileID: 8553758763985429488, guid: a29c183bbae3ec340882a1f660ea150c, type: 3}
+  - {fileID: 668836945538147818, guid: 62a023abf508dd3458de8ac20e9f847e, type: 3}
+  - {fileID: 8673873871513545666, guid: ff58760342fbc0f40b95c5c8ef1ec940, type: 3}
+  - {fileID: 2465645630871646263, guid: 7d03c5f4ddb87704e8f8bdca9856bdcc, type: 3}
+  - {fileID: 7158191451241226375, guid: 0e88cab6e970fd64b86f77bf6835b966, type: 3}
+  - {fileID: 392921560485931896, guid: b068d91137a762b43a1232ede5dc7760, type: 3}
+  - {fileID: 5543798831230468853, guid: 28ac3f8f31b24b449a64e2ae5ee2007f, type: 3}
+  - {fileID: 443683953695651006, guid: f6b84f4819e5a274aaae6e484c407e67, type: 3}
+  - {fileID: 3551104059774178373, guid: 107f6086bae8b074aa0d0509b41c6406, type: 3}
+  - {fileID: 2378841922440520483, guid: eabc23dca3f6ca34d95460ab72b31fda, type: 3}
+  - {fileID: 1511649138950321922, guid: 4316ba5529f44df469da39d2194cd960, type: 3}
+  - {fileID: 7661604474502414369, guid: c2c69842961a5384eb0ff3ae599038cf, type: 3}
+  - {fileID: 3923875568236086586, guid: 60dc8ad34f8881346ad6de02312eeec0, type: 3}
+  - {fileID: 2350859123723310058, guid: 664ac345b0424f34987051cd10c673aa, type: 3}
+  - {fileID: 1658739256696123683, guid: 2392ce8b61466fb41ab9b28fe6471652, type: 3}
+  - {fileID: 2856075991961720528, guid: c8ad6ed3933e1c443a152fc67763d4a3, type: 3}
+  - {fileID: 7428326421153995072, guid: ea15db67604387b40a86cff13518af56, type: 3}
+  - {fileID: 4799050383462102649, guid: b2f880c5711d4284f95d30dacfa92f7e, type: 3}
+  - {fileID: 476543439254328023, guid: 1942f3432b6a9ca4a91f45c193d06cef, type: 3}
+  - {fileID: 8053866891063639536, guid: 26e0984f93380554ebe73c6c8ea9a108, type: 3}
+  - {fileID: 5171996264335805528, guid: 3248a4b2bd0e8ae4ab3b175a40bf450e, type: 3}
+  - {fileID: 1472764706543595990, guid: 126d9efdba663f84099efb536c7cb50f, type: 3}
+  - {fileID: 7064883951771064745, guid: 3a50e2129dc9bd44da856bb6ee6cbc8f, type: 3}
+  - {fileID: 193938743346979169, guid: fe50f1d00638a764f963374c7279e40a, type: 3}
+  - {fileID: 2683169133477609580, guid: bc3d9917a162aa9478880f6777ae76f8, type: 3}
+  - {fileID: 8503533997164099699, guid: fd0464c1370c8d94ca09f1eee8cefe38, type: 3}
+  targetObject: {fileID: 1321963546638423986}
+  centerMass: {fileID: 1321963545254938369}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  chosenFish: 0
+  fishQuantity: 25
+  maxNeighbourDistance: 1
+  fishSpeed: 4
+  fishFlocking: 200
+  fishNoise: 5
+  fishSeparationForce: 4
+  swimTimeStart: 5
+  pauseTimeStart: 10
+  cartSpeed: 5
+  movementSpeed: 5
+--- !u!114 &1321963546638424143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321963546638423986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Path: {fileID: 1321963545760872824}
+  m_UpdateMethod: 0
+  m_PositionUnits: 1
+  m_Speed: 1
+  m_Position: 0

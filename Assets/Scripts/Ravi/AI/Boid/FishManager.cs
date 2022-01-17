@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FishManager : MonoBehaviour
 {
@@ -19,13 +20,15 @@ public class FishManager : MonoBehaviour
     //---------------things to set------------------------------
     [Header("Assign before running")]
     [SerializeField]
-    private GameObject fishPrefab;
+    private GameObject[] fishPrefabs;
     [SerializeField]
     private GameObject targetObject;
     [SerializeField]
     private GameObject centerMass;
     [SerializeField]
     private LayerMask layerMask;
+    [SerializeField]
+    private int chosenFish;
 
     //---------------settings for the game designer-------------
     [Header("Settings")]
@@ -47,6 +50,11 @@ public class FishManager : MonoBehaviour
     [Tooltip("Update how aggressively fishs avoid each other")]
     [Range(1, 100)]
     public float fishSeparationForce = 5f;
+    public float swimTimeStart = 5f;
+    public float pauseTimeStart = 5f;
+    public float cartSpeed = 2;
+    private float swimTime = 5f;
+    private float pauseTime = 5f;
 
     //---------------extra settings for the game designer------
     [Header("Extra settings")]
@@ -54,12 +62,17 @@ public class FishManager : MonoBehaviour
     [Range(1, 100)]
     public float movementSpeed = 5; // TODO move cart to follow path
 
+    private CinemachineDollyCart CDC;
+
     void Start()
     {
+        CDC = gameObject.GetComponent<CinemachineDollyCart>();
         Vector3 posTotal = Vector3.zero;
         GameObject parentObj = new GameObject();
         parentObj.name = "Collection " + gameObject.name;
         averagePosition = targetObject.transform.position;
+        swimTime = swimTimeStart;
+        pauseTime = pauseTimeStart;
 
         for (int i = 0; i < fishQuantity; i++)
         {
@@ -68,7 +81,7 @@ public class FishManager : MonoBehaviour
                 targetObject.transform.position.y + (Random.Range(1, 500) / 100f),
                 targetObject.transform.position.z + (Random.Range(1, 500) / 100f)
             );
-            GameObject fishObj = Instantiate(fishPrefab, startPos, Quaternion.identity);
+            GameObject fishObj = Instantiate(fishPrefabs[chosenFish], startPos, Quaternion.identity);
             fishObj.name = "" + i;
             fishObj.tag = "fish";
             fishObj.transform.parent = parentObj.transform;
@@ -94,6 +107,22 @@ public class FishManager : MonoBehaviour
         averagePosition += (targetObject.transform.position - averagePosition).normalized * Time.deltaTime * movementSpeed;
 
         centerMass.transform.position = averagePosition;
+
+        if (swimTime > 0)
+        {
+            swimTime -= Time.deltaTime;
+            CDC.m_Speed = cartSpeed;
+        }
+        if (swimTime <= 0)
+        {
+            pauseTime -= Time.deltaTime;
+            CDC.m_Speed = 0;
+            if (pauseTime <= 0)
+            {
+                pauseTime = pauseTimeStart;
+                swimTime = swimTimeStart;
+            }
+        }
     }
 
     IEnumerator Updatefishes()
