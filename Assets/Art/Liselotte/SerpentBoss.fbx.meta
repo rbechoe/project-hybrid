@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: 6612135421000383800
     second: Armature|bite
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__M_BLOCKOUT.002
+    second: {fileID: 2100000, guid: 9b5514716887dda42a800a1dc78177be, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

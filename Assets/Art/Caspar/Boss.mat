@@ -61,6 +61,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveHeight: 0.2
-    - _fadeAmount: 0.8387452
-    m_Colors: []
+    - _emission: 0.005
+    - _fadeAmount: 0
+    m_Colors:
+    - _color: {r: 0.12944107, g: 0.33962262, b: 0.24779809, a: 1}
   m_BuildTextureStacks: []

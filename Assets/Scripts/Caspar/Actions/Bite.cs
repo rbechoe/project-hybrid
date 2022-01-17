@@ -36,7 +36,6 @@ public class Bite : Action
         if (!isAnimating)
         {
             animator.SetTrigger("attack");
-            animator.SetFloat("attackSpeedMultiplier", 1 / duration);
             StartCoroutine(Attack(transform.position, target.position));
         }
 
