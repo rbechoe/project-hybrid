@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SharkSpine
+  m_Name: bones
   m_Shader: {fileID: 4800000, guid: ad394ab92593c1f4ea90e834a025d9bf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
