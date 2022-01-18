@@ -49,6 +49,10 @@ public class ColliderInfo : MonoBehaviour
         {
             // TODO invoke eventsystem that enables boss
         }
+        if ((types & TriggerTypes.BossRadar) != 0)
+        {
+            // TODO invoke eventsystem that shows massive red dot
+        }
         Destroy(gameObject);
     }
 }
@@ -62,5 +66,6 @@ public enum TriggerTypes
     Speed       = 4,
     SFX         = 8,
     StartDive   = 16,
-    StartBoss   = 32
+    StartBoss   = 32,
+    BossRadar   = 64,
 }
