@@ -33,8 +33,8 @@ public class FishManager : MonoBehaviour
     [Tooltip("Set amount of fishes")]
     [Range(1, 10000)]
     public int fishQuantity;
-    [Tooltip("Update fish seperation")]
-    [Range(1, 10)]
+    [Tooltip("Update fish seperation distance")]
+    [Range(1, 20)]
     public float maxNeighbourDistance = 1f;
     [Tooltip("Update fish speed")]
     [Range(1, 50)]
