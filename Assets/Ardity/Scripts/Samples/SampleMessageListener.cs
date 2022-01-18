@@ -20,7 +20,7 @@ public class SampleMessageListener : MonoBehaviour
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
     {
-        //Debug.Log("Message arrived: " + msg);
+        Debug.Log("Message arrived: " + msg);
 
         if(msg.Contains("Button: 1"))
         {
@@ -29,6 +29,7 @@ public class SampleMessageListener : MonoBehaviour
 
         if(msg.Contains("Value X: "))
         {
+
             string valX = msg.Replace("Value X: ", "");
             float valueX = float.Parse(valX);
             Debug.Log(valueX);
@@ -42,6 +43,14 @@ public class SampleMessageListener : MonoBehaviour
             Debug.Log(valueY);
             EventSystem<float>.InvokeEvent(EventType.TURRET_Y, valueY);
 
+        }
+
+        if(msg.Contains("Switch: "))
+        {
+            string valSwitch = msg.Replace("Switch: ", "");
+            float valueSwitch = float.Parse(valSwitch);
+            Debug.Log(valueSwitch);
+            EventSystem<float>.InvokeEvent(EventType.TOGGLE_DIVE, valueSwitch);
         }
     }
 

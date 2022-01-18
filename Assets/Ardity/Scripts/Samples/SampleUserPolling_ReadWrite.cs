@@ -52,15 +52,48 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
 
         string message = serialController.ReadSerialMessage();
 
+
         if (message == null)
             return;
+
+        if (message.Contains("Button: 1"))
+        {
+            Debug.Log("Shoot");
+            EventSystem.InvokeEvent(EventType.SHOOT);
+        }
+
+        if (message.Contains("Value X: "))
+        {
+            string valX = message.Replace("Value X: ", "");
+            float valueX = float.Parse(valX);
+            Debug.Log(valueX);
+            EventSystem<float>.InvokeEvent(EventType.TURRET_X, valueX);
+        }
+
+        if (message.Contains("Value Y: "))
+        {
+            string valY = message.Replace("Value Y: ", "");
+            float valueY = float.Parse(valY);
+            Debug.Log(valueY);
+            EventSystem<float>.InvokeEvent(EventType.TURRET_Y, valueY);
+
+        }
+
+        if (message.Contains("Switch: "))
+        {
+            string valSwitch = message.Replace("Switch: ", "");
+            float valueSwitch = float.Parse(valSwitch);
+            Debug.Log(valueSwitch);
+            EventSystem<float>.InvokeEvent(EventType.TOGGLE_DIVE, valueSwitch);
+        }
+
 
         // Check if the message is plain data or a connect/disconnect event.
         if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
             Debug.Log("Connection established");
         else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
             Debug.Log("Connection attempt failed or disconnection detected");
-        else
-            Debug.Log("Message arrived: " + message);
+       // else
+         //   Debug.Log("REEEEEEEEEMessage arrived: " + message);
     }
 }
