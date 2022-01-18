@@ -12,5 +12,7 @@ public class BossHealth : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
+        EventSystem.InvokeEvent(EventType.BOSS_DAMAGED);
     }
 }

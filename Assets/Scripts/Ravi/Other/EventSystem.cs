@@ -82,4 +82,5 @@ public enum EventType
     // gameplay related
     DAMAGE_PLAYER = 9,
     START_BOSS = 10,
+    BOSS_DAMAGED = 11,
 }

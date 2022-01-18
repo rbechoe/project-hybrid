@@ -15,6 +15,7 @@ public class Bite : Action
 
     private bool isAnimating;
     private bool isDone;
+    private bool hasAttacked;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class Bite : Action
     {
         var projectile = FindObjectOfType<Projectile>();
         var inRange = Vector3.Distance(transform.position, target.position) > maxAttackRange;
+        
+        EventSystem.AddListener(EventType.BOSS_DAMAGED, OnBossDamaged);
 
         return projectile == null && inRange;
     }
@@ -45,12 +48,18 @@ public class Bite : Action
     protected override void Reset()
     {
         isDone = false;
+        EventSystem.RemoveListener(EventType.BOSS_DAMAGED, OnBossDamaged);
+    }
+
+    private void OnBossDamaged()
+    {
+        hasAttacked = true;
     }
     
     private IEnumerator Attack(Vector3 origin, Vector3 targetPos)
     {
         isAnimating = true;
-        var hasAttacked = false;
+        hasAttacked = false;
         
         var journey = 0f;
         while (journey <= duration)
