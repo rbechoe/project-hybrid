@@ -47,7 +47,7 @@ public class ColliderInfo : MonoBehaviour
         }
         if ((types & TriggerTypes.StartBoss) != 0)
         {
-            // TODO invoke eventsystem that enables boss
+            EventSystem.InvokeEvent(EventType.START_BOSS);
         }
         if ((types & TriggerTypes.BossRadar) != 0)
         {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossHealth : MonoBehaviour, IDamagable
+public class BossHealth : MonoBehaviour
 {
     [SerializeField] private int health;
 
