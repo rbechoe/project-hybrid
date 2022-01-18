@@ -83,4 +83,9 @@ public enum EventType
     DAMAGE_PLAYER = 9,
     START_BOSS = 10,
     BOSS_DAMAGED = 11,
+    // arduino input
+    ROT_X = 12,
+    ROT_Y = 13,
+    DIVE_ON = 14,
+    DIVE_OFF = 15,
 }

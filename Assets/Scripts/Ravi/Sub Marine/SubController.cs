@@ -36,6 +36,10 @@ public class SubController : MonoBehaviour
     private void Start()
     {
         EventSystem.AddListener(EventType.TOGGLE_DIVE, ToggleDive);
+        EventSystem.AddListener(EventType.DIVE_ON, DiveOn);
+        EventSystem.AddListener(EventType.DIVE_OFF, DiveOff);
+        EventSystem<int>.AddListener(EventType.TURRET_Y, TurretY);
+        EventSystem<int>.AddListener(EventType.TURRET_X, TurretX);
         EventSystem.AddListener(EventType.AIM_LEFT, AimLeft);
         EventSystem.AddListener(EventType.AIM_RIGHT, AimRight);
         EventSystem.AddListener(EventType.AIM_UP, AimUp);
@@ -47,6 +51,26 @@ public class SubController : MonoBehaviour
     void ToggleDive()
     {
         diving = !diving;
+    }
+
+    void DiveOn()
+    {
+        diving = true;
+    }
+
+    void TurretY(int axis)
+    {
+        turretY = axis;
+    }
+
+    void TurretX(int axis)
+    {
+        turretX = axis;
+    }
+
+    void DiveOff()
+    {
+        diving = false;
     }
 
     void AimLeft()
