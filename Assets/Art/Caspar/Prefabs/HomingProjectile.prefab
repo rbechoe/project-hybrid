@@ -130,6 +130,6 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 40
   turnSpeed: 20
-  health: 100
+  health: 2
   damage: 10
   damageRange: 10
