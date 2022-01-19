@@ -17,13 +17,14 @@ public class Fish : MonoBehaviour, IDamagable
     private float maxY = 0;
 
     private Vector3 currentVelocity = Vector3.zero;
-
+    private bool enableCap;
     private FishManager manager;
     private LayerMask LM;
 
-    public void FishSetup(FishManager _manager, LayerMask mask, float height)
+    public void FishSetup(FishManager _manager, LayerMask mask, float height, bool _enableCap)
     {
         manager = _manager;
+        enableCap = _enableCap;
         LM = mask;
         minY = manager.transform.position.y - height;
         maxY = manager.transform.position.y + height;
@@ -35,7 +36,7 @@ public class Fish : MonoBehaviour, IDamagable
         velocity = velocity.normalized;
         currentVelocity = Vector3.MoveTowards(currentVelocity, velocity, (separationForce * Time.deltaTime));
         // clamp fish height
-        if ((position.y > maxY && currentVelocity.y > 0) || (position.y < minY && currentVelocity.y < 0))
+        if ((position.y > maxY && currentVelocity.y > 0) || (position.y < minY && currentVelocity.y < 0) && enableCap)
         {
             currentVelocity = new Vector3(currentVelocity.x, -currentVelocity.y / separationForce, currentVelocity.z);
         }

@@ -11,6 +11,7 @@ public class ColliderInfo : MonoBehaviour
     public AudioClip newAmbience;
     public AudioClip newMusic;
     public float maxDiveSpeed = 16;
+    public GameObject removeSonarDot;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -51,7 +52,7 @@ public class ColliderInfo : MonoBehaviour
         }
         if ((types & TriggerTypes.BossRadar) != 0)
         {
-            // TODO invoke eventsystem that shows massive red dot
+            Destroy(removeSonarDot);
         }
         Destroy(gameObject);
     }

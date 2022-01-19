@@ -54,6 +54,8 @@ public class FishManager : MonoBehaviour
     public float pauseTimeStart = 5f;
     public float cartSpeed = 2;
 
+    public bool enableCap;
+
     private float swimTime = 5f;
     private float pauseTime = 5f;
     private GameObject targetObject;
@@ -90,7 +92,7 @@ public class FishManager : MonoBehaviour
             fishObj.transform.parent = parentObj.transform;
 
             Fish newFish = fishObj.GetComponent<Fish>();
-            newFish.FishSetup(this, layerMask, maxHeightRange);
+            newFish.FishSetup(this, layerMask, maxHeightRange, enableCap);
             fishInstances.Add(newFish);
             fishInstances[i].myObject = fishObj;
             fishInstances[i].position = startPos;

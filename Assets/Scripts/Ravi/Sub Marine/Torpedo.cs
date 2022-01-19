@@ -5,16 +5,16 @@ using UnityEngine;
 public class Torpedo : MonoBehaviour
 {
     float speed = 1f;
-    float maxSpeed = 20;
+    float maxSpeed = 100;
     float lifeTime = 5;
     float life = 5;
-    float imoTimer = 0.25f;
+    float imoTimer = 0.05f;
 
     public GameObject sharkImpact;
 
     void Update()
     {
-        if (speed < maxSpeed) speed += 0.1f * Time.deltaTime;
+        if (speed < maxSpeed) speed += 0.5f * Time.deltaTime;
         transform.position += transform.forward * speed;
         lifeTime -= Time.deltaTime;
 
