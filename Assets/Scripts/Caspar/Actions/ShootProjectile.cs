@@ -8,7 +8,7 @@ public class ShootProjectile : Action
 
     public override bool PerformAction()
     {
-        var instance = Instantiate(projectile, origin.position, Quaternion.identity);
+        var instance = Instantiate(projectile, origin.position, origin.rotation);
         var component = instance.GetComponent<Projectile>();
         if (component != null)
         {

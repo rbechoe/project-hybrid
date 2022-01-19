@@ -18,10 +18,8 @@ public class WaveProjectile : Projectile
         transform.forward = (target.position - transform.position).normalized;
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-        
         distance = Vector3.Distance(transform.position, target.position);
         easing = distance < easingDistance ? Mathf.InverseLerp(0, easingDistance, distance) : 1;
         
