@@ -9,6 +9,7 @@ TagManager:
   - PlayerAttack
   - SubMarine
   - fish
+  - AudioManager
   layers:
   - Default
   - TransparentFX

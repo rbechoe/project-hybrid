@@ -6,6 +6,7 @@ public class Fish : MonoBehaviour, IDamagable
     public Material myMat;
     public Vector3 position;
     public Vector3 velocity;
+    public AudioClip hit1, hit2;
     public int quantity { get; set; }
     public float speed { get; set; }
     public float separationForce { get; set; }
@@ -20,6 +21,7 @@ public class Fish : MonoBehaviour, IDamagable
     private bool enableCap;
     private FishManager manager;
     private LayerMask LM;
+    private AudioSystem audioSystem;
 
     public void FishSetup(FishManager _manager, LayerMask mask, float height, bool _enableCap)
     {
@@ -28,6 +30,7 @@ public class Fish : MonoBehaviour, IDamagable
         LM = mask;
         minY = manager.transform.position.y - height;
         maxY = manager.transform.position.y + height;
+        audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
 
     public void Update()
@@ -80,5 +83,9 @@ public class Fish : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         manager.RemoveFish(this);
+        if (Random.Range(0, 100) > 50)
+            audioSystem.ShootSFX(hit1, transform.position);
+        else
+            audioSystem.ShootSFX(hit2, transform.position);
     }
 }

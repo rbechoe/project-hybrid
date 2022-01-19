@@ -18,7 +18,7 @@ public class SubController : MonoBehaviour
     public AudioSource music;
     public AudioSource ambient;
 
-    public AudioClip diveSFX;
+    public AudioClip diveSFX, shootSFX;
 
     public CinemachineDollyCart CDC;
 
@@ -32,6 +32,7 @@ public class SubController : MonoBehaviour
     public RawImage mainUI, sideAUI, sideBUI;
 
     bool diving;
+    AudioSystem audioSystem;
 
     private void Start()
     {
@@ -46,6 +47,8 @@ public class SubController : MonoBehaviour
         EventSystem.AddListener(EventType.AIM_DOWN, AimDown);
         EventSystem.AddListener(EventType.SHOOT, Shoot);
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
+
+        audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
 
     void ToggleDive()
@@ -99,6 +102,7 @@ public class SubController : MonoBehaviour
         {
             Instantiate(projectile, bulletSpawn.transform.position, turret.transform.rotation);
             shootCooldown = shootCooldownReset;
+            audioSystem.ShootSFX(shootSFX, bulletSpawn.transform.position);
         }
     }
 

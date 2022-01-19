@@ -12,6 +12,10 @@ public class Torpedo : MonoBehaviour
 
     public GameObject sharkImpact;
 
+    public AudioClip hit;
+
+    AudioSystem audioSystem;
+
     void Update()
     {
         if (speed < maxSpeed) speed += 0.5f * Time.deltaTime;
@@ -21,6 +25,8 @@ public class Torpedo : MonoBehaviour
         if (lifeTime < 0) Destroy(gameObject);
 
         imoTimer -= Time.deltaTime;
+
+        audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,6 +37,7 @@ public class Torpedo : MonoBehaviour
         {
             collision.gameObject.GetComponent<IDamagable>()?.TakeDamage(1);
             Instantiate(sharkImpact, transform.position, Quaternion.identity);
+            audioSystem.ShootSFX(hit, transform.position);
             Destroy(gameObject);
         }
         else
