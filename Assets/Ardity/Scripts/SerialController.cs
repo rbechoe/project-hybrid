@@ -63,8 +63,8 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void OnEnable()
     {
-        serialThread = new SerialThreadLines(portName, 
-                                             baudRate, 
+        serialThread = new SerialThreadLines(portName,
+                                             baudRate,
                                              reconnectionDelay,
                                              maxUnreadMessages);
         thread = new Thread(new ThreadStart(serialThread.RunForever));
@@ -122,8 +122,8 @@ public class SerialController : MonoBehaviour
             messageListener.SendMessage("OnConnectionEvent", true);
         else if (ReferenceEquals(message, SERIAL_DEVICE_DISCONNECTED))
             messageListener.SendMessage("OnConnectionEvent", false);
-        else
-            messageListener.SendMessage("OnMessageArrived", message);
+        // else
+        //   messageListener.SendMessage("OnMessageArrived", message);
     }
 
     // ------------------------------------------------------------------------

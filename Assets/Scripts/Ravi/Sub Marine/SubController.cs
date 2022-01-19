@@ -13,7 +13,7 @@ public class SubController : MonoBehaviour
     public float graceFloat = 2f;
     public float graceFloatReset = 2f;
     public float shootCooldownReset = 1f;
-    
+
     public AudioSource localSFX;
     public AudioSource music;
     public AudioSource ambient;
@@ -38,16 +38,16 @@ public class SubController : MonoBehaviour
         EventSystem.AddListener(EventType.TOGGLE_DIVE, ToggleDive);
         EventSystem.AddListener(EventType.DIVE_ON, DiveOn);
         EventSystem.AddListener(EventType.DIVE_OFF, DiveOff);
-        EventSystem<int>.AddListener(EventType.TURRET_Y, TurretY);
-        EventSystem<int>.AddListener(EventType.TURRET_X, TurretX);
+        EventSystem<float>.AddListener(EventType.TURRET_Y, TurretY);
+        EventSystem<float>.AddListener(EventType.TURRET_X, TurretX);
         EventSystem.AddListener(EventType.AIM_LEFT, AimLeft);
         EventSystem.AddListener(EventType.AIM_RIGHT, AimRight);
         EventSystem.AddListener(EventType.AIM_UP, AimUp);
         EventSystem.AddListener(EventType.AIM_DOWN, AimDown);
         EventSystem.AddListener(EventType.SHOOT, Shoot);
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
-    }
 
+    }
     void ToggleDive()
     {
         diving = !diving;
@@ -56,21 +56,23 @@ public class SubController : MonoBehaviour
     void DiveOn()
     {
         diving = true;
+        Debug.Log("Dive Called ON");
     }
 
-    void TurretY(int axis)
+    void TurretY(float axisY)
     {
-        turretY = axis;
+        turretY = axisY;
     }
 
-    void TurretX(int axis)
+    void TurretX(float axisX)
     {
-        turretX = axis;
+        turretX = axisX;
     }
 
     void DiveOff()
     {
         diving = false;
+        Debug.Log("Dive Called OFF");
     }
 
     void AimLeft()
@@ -156,15 +158,11 @@ public class SubController : MonoBehaviour
 
     public void UpdateMusic(AudioClip music)
     {
-        this.music.Stop();
         this.music.clip = music;
-        this.music.Play();
     }
 
     public void UpdateAmbient(AudioClip ambient)
     {
-        this.ambient.Stop();
         this.ambient.clip = ambient;
-        this.ambient.Play();
     }
 }

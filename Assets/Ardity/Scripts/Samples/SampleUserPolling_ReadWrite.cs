@@ -51,8 +51,6 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         //---------------------------------------------------------------------
 
         string message = serialController.ReadSerialMessage();
-
-
         if (message == null)
             return;
 
@@ -66,7 +64,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         {
             string valX = message.Replace("Value X: ", "");
             float valueX = float.Parse(valX);
-            Debug.Log(valueX);
+            //Debug.Log("Val X: " + valueX);
             EventSystem<float>.InvokeEvent(EventType.TURRET_X, valueX);
         }
 
@@ -74,7 +72,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         {
             string valY = message.Replace("Value Y: ", "");
             float valueY = float.Parse(valY);
-            Debug.Log(valueY);
+            //Debug.Log("Val Y: " + valueY);
             EventSystem<float>.InvokeEvent(EventType.TURRET_Y, valueY);
 
         }
@@ -82,18 +80,24 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         if (message.Contains("Switch: "))
         {
             string valSwitch = message.Replace("Switch: ", "");
-            float valueSwitch = float.Parse(valSwitch);
-            Debug.Log(valueSwitch);
-            EventSystem<float>.InvokeEvent(EventType.TOGGLE_DIVE, valueSwitch);
+            int valueSwitch = int.Parse(valSwitch);
+            Debug.Log("Switch: " + valueSwitch);
+            if (valueSwitch == 0)
+            {
+                EventSystem.InvokeEvent(EventType.DIVE_OFF);
+            }
+            if (valueSwitch == 1)
+            {
+                EventSystem.InvokeEvent(EventType.DIVE_ON);
+            }
         }
-
 
         // Check if the message is plain data or a connect/disconnect event.
         if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
             Debug.Log("Connection established");
         else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
             Debug.Log("Connection attempt failed or disconnection detected");
-       // else
-         //   Debug.Log("REEEEEEEEEMessage arrived: " + message);
+        else
+            Debug.Log("Message arrived: " + message);
     }
 }
