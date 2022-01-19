@@ -24,7 +24,6 @@ public class ColliderInfo : MonoBehaviour
         if (!collision.transform.CompareTag("SubMarine")) return;
 
         SubController sub = collision.gameObject.GetComponent<SubController>();
-        print("Fired actions");
 
         if ((types & TriggerTypes.Music) != 0)
         {
