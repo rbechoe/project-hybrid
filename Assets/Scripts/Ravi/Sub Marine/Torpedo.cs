@@ -8,6 +8,7 @@ public class Torpedo : MonoBehaviour
     float maxSpeed = 20;
     float lifeTime = 5;
     float life = 5;
+    float imoTimer = 0.25f;
 
     public GameObject sharkImpact;
 
@@ -18,10 +19,14 @@ public class Torpedo : MonoBehaviour
         lifeTime -= Time.deltaTime;
 
         if (lifeTime < 0) Destroy(gameObject);
+
+        imoTimer -= Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (imoTimer >= 0) return;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<IDamagable>()?.TakeDamage(1);
