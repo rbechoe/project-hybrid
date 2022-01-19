@@ -49,10 +49,11 @@ public class ColliderInfo : MonoBehaviour
         if ((types & TriggerTypes.StartBoss) != 0)
         {
             EventSystem.InvokeEvent(EventType.START_BOSS);
+            Destroy(removeSonarDot); // removes directional light
         }
         if ((types & TriggerTypes.BossRadar) != 0)
         {
-            Destroy(removeSonarDot);
+            Destroy(removeSonarDot); // removes big boss dot
         }
         Destroy(gameObject);
     }

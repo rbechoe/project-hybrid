@@ -165,7 +165,6 @@ public class FishManager : MonoBehaviour
 
     public void RemoveFish(Fish _fish)
     {
-        Debug.Log("removing fish");
         fishInstances.Remove(_fish);
         Destroy(_fish.myObject);
     }
