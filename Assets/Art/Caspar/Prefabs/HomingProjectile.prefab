@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: -6275764446257030752}
   - component: {fileID: 636875168979005081}
   - component: {fileID: -4848310868701970145}
+  - component: {fileID: 4541961898432410033}
   m_Layer: 10
   m_Name: HomingProjectile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,3 +231,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4541961898432410033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564610361762381583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297c6972b49bd6a4dbcd16e557639f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 8
+  dead: 0

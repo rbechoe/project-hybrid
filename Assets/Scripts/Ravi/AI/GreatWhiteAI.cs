@@ -22,6 +22,8 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     private readonly Queue<Action> actions = new Queue<Action>();
 
     bool attacking;
+    public AudioClip attackSFX, dieSFX;
+    AudioSystem audioSystem;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         cart = cartObj.GetComponent<SharkCart>();
 
         FSM = new FiniteStateMachine();
+        audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
 
         CreateIdleState();
         CreateActionState();
@@ -92,6 +95,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
 
             if (Vector3.Distance(transform.position, player.transform.position) < detectRange && attackCd <= 0)
             {
+                audioSystem.ShootSFX(attackSFX, transform.position);
                 attacking = true;
                 attackCd = graceTime;
                 Transfer(actions.Peek());
@@ -104,6 +108,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         hp -= damage;
         if (hp <= 0)
         {
+            audioSystem.ShootSFX(dieSFX, transform.position);
             gameObject.GetComponent<EnemyInfo>().dead = true;
             anim.SetTrigger("Dead");
             Destroy(this);

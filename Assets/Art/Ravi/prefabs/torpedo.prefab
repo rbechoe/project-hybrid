@@ -961,6 +961,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharkImpact: {fileID: 3790671676741006533, guid: 95997c980fa90864682414198a53e408, type: 3}
+  hit1: {fileID: 8300000, guid: 3406118dec4f0034eb054cd17073cd2e, type: 3}
+  hit2: {fileID: 8300000, guid: 3323fb2698ea2d84aab6e419a7db2774, type: 3}
 --- !u!65 &5818393899512649656
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Torpedo : MonoBehaviour
 
     public GameObject sharkImpact;
 
-    public AudioClip hit;
+    public AudioClip hit1, hit2;
 
     AudioSystem audioSystem;
 
@@ -37,7 +37,8 @@ public class Torpedo : MonoBehaviour
         {
             collision.gameObject.GetComponent<IDamagable>()?.TakeDamage(1);
             Instantiate(sharkImpact, transform.position, Quaternion.identity);
-            audioSystem.ShootSFX(hit, transform.position);
+            audioSystem.ShootSFX(hit1, transform.position);
+            audioSystem.ShootSFX(hit2, transform.position);
             Destroy(gameObject);
         }
         else

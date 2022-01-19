@@ -26,9 +26,7 @@ public class SubController : MonoBehaviour
     float turretX, turretY;
     float aimSpeed = 40;
     float shootCooldown = 0;
-
-    public Texture2D blueImg, redImg;
-    public Texture2D blueSmallImg, redSmallImg;
+    
     public RawImage mainUI, sideAUI, sideBUI;
 
     bool diving;
@@ -49,8 +47,7 @@ public class SubController : MonoBehaviour
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
         audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
-
-    }
+    
     void ToggleDive()
     {
         diving = !diving;
@@ -59,7 +56,6 @@ public class SubController : MonoBehaviour
     void DiveOn()
     {
         diving = true;
-        Debug.Log("Dive Called ON");
     }
 
     void TurretY(float axisY)
@@ -75,7 +71,6 @@ public class SubController : MonoBehaviour
     void DiveOff()
     {
         diving = false;
-        Debug.Log("Dive Called OFF");
     }
 
     void AimLeft()
@@ -115,13 +110,13 @@ public class SubController : MonoBehaviour
 
     IEnumerator HitEffect()
     {
-        mainUI.texture = redImg;
-        sideAUI.texture = redSmallImg;
-        sideBUI.texture = redSmallImg;
+        mainUI.color = Color.red;
+        sideAUI.color = Color.red;
+        sideBUI.color = Color.red;
         yield return new WaitForSeconds(0.5f);
-        mainUI.texture = blueImg;
-        sideAUI.texture = blueSmallImg;
-        sideBUI.texture = blueSmallImg;
+        mainUI.color = Color.white;
+        sideAUI.color = Color.white;
+        sideBUI.color = Color.white;
     }
 
     void Update()
@@ -162,11 +157,15 @@ public class SubController : MonoBehaviour
 
     public void UpdateMusic(AudioClip music)
     {
+        this.music.Stop();
         this.music.clip = music;
+        this.music.Play();
     }
 
     public void UpdateAmbient(AudioClip ambient)
     {
+        this.ambient.Stop();
         this.ambient.clip = ambient;
+        this.ambient.Play();
     }
 }
