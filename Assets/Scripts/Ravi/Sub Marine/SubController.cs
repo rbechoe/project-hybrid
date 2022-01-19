@@ -156,11 +156,15 @@ public class SubController : MonoBehaviour
 
     public void UpdateMusic(AudioClip music)
     {
+        this.music.Stop();
         this.music.clip = music;
+        this.music.Play();
     }
 
     public void UpdateAmbient(AudioClip ambient)
     {
+        this.ambient.Stop();
         this.ambient.clip = ambient;
+        this.ambient.Play();
     }
 }
