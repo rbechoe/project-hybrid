@@ -37,12 +37,12 @@ public class Fish : MonoBehaviour, IDamagable
     {
         velocity += Force();
         velocity = velocity.normalized;
-        currentVelocity = Vector3.MoveTowards(currentVelocity, velocity, (separationForce * Time.deltaTime));
         // clamp fish height
-        if ((position.y > maxY && currentVelocity.y > 0) || (position.y < minY && currentVelocity.y < 0) && enableCap)
+        if ((position.y > maxY || position.y < minY) && enableCap)
         {
-            currentVelocity = new Vector3(currentVelocity.x, -currentVelocity.y / separationForce, currentVelocity.z);
+            velocity = new Vector3(velocity.x, -(velocity.y / separationForce), velocity.z);
         }
+        currentVelocity = Vector3.MoveTowards(currentVelocity, velocity, (separationForce * Time.deltaTime));
         position += currentVelocity * Time.deltaTime * speed;
         myObject.transform.position = position;
         myObject.transform.LookAt(position + currentVelocity);
