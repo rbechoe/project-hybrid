@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5468603072576309547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 533f80c8376a08649890d73eea0e2dd8, type: 2}
+  - {fileID: 2100000, guid: d7cf71cb3bf99b3469f193e8337d9c6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,11 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 2
+  speed: 10
   turnSpeed: 40
   health: 20
   damage: 10
   damageRange: 2
-  waveAmplitude: 5
-  waveFrequency: 2
-  easingDistance: 8
+  waveAmplitude: 10
+  waveFrequency: 4
+  easingDistance: 20
