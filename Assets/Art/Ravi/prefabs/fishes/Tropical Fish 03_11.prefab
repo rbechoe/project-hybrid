@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8673873871514417088}
   - component: {fileID: 8673873871515546624}
   - component: {fileID: 8673873871513545667}
+  - component: {fileID: -3763395812529499011}
   m_Layer: 13
   m_Name: Tropical Fish 03_11
   m_TagString: fish
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.036728006, y: 0.09477813, z: 0.20022073}
   m_Center: {x: 0, y: 0.020501915, z: -0.07703814}
+--- !u!114 &-3763395812529499011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673873871513545666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24044b4a3374158409a51204a4f95320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myObject: {fileID: 0}
+  myMat: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}

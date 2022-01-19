@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Fish
+public class Fish : MonoBehaviour, IDamagable
 {
     public GameObject myObject;
     public Material myMat;
@@ -21,7 +21,7 @@ public class Fish
     private FishManager manager;
     private LayerMask LM;
 
-    public Fish(FishManager _manager, LayerMask mask, float height)
+    public void FishSetup(FishManager _manager, LayerMask mask, float height)
     {
         manager = _manager;
         LM = mask;
@@ -74,5 +74,10 @@ public class Fish
         }
 
         return fishDirection + fishVelocity + fishForce;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        manager.RemoveFish(this);
     }
 }
