@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IDamagable
 {
-    [HideInInspector] public Transform target;
+    [SerializeField] public Transform target;
     [SerializeField] protected float speed = 1f;
     [SerializeField] protected float turnSpeed = 1f;
     [Space] [SerializeField] private int health;
@@ -14,10 +14,11 @@ public class Projectile : MonoBehaviour, IDamagable
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        transform.LookAt(target.position);
         OnStart();
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         if (Vector3.Distance(transform.position, target.position) < damageRange)
         {
