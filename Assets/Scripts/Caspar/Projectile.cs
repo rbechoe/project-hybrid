@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour, IDamagable
@@ -10,11 +11,15 @@ public class Projectile : MonoBehaviour, IDamagable
     [SerializeField] private float damageRange = 1f;
 
     protected Rigidbody rb;
+    private Material material;
+    private Color startColor;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         transform.LookAt(target.position);
+        material = GetComponent<Renderer>().material;
+        startColor = material.GetColor("_EmissionColor");
         OnStart();
     }
 
@@ -32,6 +37,8 @@ public class Projectile : MonoBehaviour, IDamagable
     {
         health -= damage;
 
+        StartCoroutine(DamageFlash());
+
         if (health <= 0)
         {
             Die();
@@ -46,5 +53,14 @@ public class Projectile : MonoBehaviour, IDamagable
     protected virtual void OnStart()
     {
         
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        material.SetColor("_EmissionColor", Color.black);
+
+        yield return new WaitForSeconds(0.1f);
+        
+        material.SetColor("_EmissionColor", startColor);
     }
 }
