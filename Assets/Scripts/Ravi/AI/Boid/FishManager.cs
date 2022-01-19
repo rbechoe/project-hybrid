@@ -48,9 +48,12 @@ public class FishManager : MonoBehaviour
     [Tooltip("Update how aggressively fishs avoid each other")]
     [Range(1, 100)]
     public float fishSeparationForce = 5f;
+
+    public float maxHeightRange = 10f;
     public float swimTimeStart = 5f;
     public float pauseTimeStart = 5f;
     public float cartSpeed = 2;
+
     private float swimTime = 5f;
     private float pauseTime = 5f;
     private GameObject targetObject;
@@ -59,7 +62,7 @@ public class FishManager : MonoBehaviour
     [Header("Extra settings")]
     [Tooltip("How fast do we move to the target?")]
     [Range(1, 100)]
-    public float movementSpeed = 5; // TODO move cart to follow path
+    public float movementSpeed = 5;
 
     private CinemachineDollyCart CDC;
 
@@ -77,19 +80,17 @@ public class FishManager : MonoBehaviour
         for (int i = 0; i < fishQuantity; i++)
         {
             Vector3 startPos = new Vector3(
-                targetObject.transform.position.x + (Random.Range(1, 500) / 100f),
-                targetObject.transform.position.y + (Random.Range(1, 500) / 100f),
-                targetObject.transform.position.z + (Random.Range(1, 500) / 100f)
+                targetObject.transform.position.x + (Random.Range(1, 1000) / 100f),
+                targetObject.transform.position.y + (Random.Range(1, 1000) / 100f),
+                targetObject.transform.position.z + (Random.Range(1, 1000) / 100f)
             );
             GameObject fishObj = Instantiate(fishPrefabs[chosenFish], startPos, Quaternion.identity);
             fishObj.name = "" + i;
             fishObj.tag = "fish";
             fishObj.transform.parent = parentObj.transform;
 
-            fishInstances.Add(new Fish(this, layerMask));
+            fishInstances.Add(new Fish(this, layerMask, maxHeightRange));
             fishInstances[i].myObject = fishObj;
-            fishInstances[i].myMat = fishObj.GetComponent<Renderer>().material;
-            fishInstances[i].myMat.EnableKeyword("_EMISSION");
             fishInstances[i].position = startPos;
             fishInstances[i].velocity = Vector3.zero;
             fishInstances[i].quantity = fishQuantity;
