@@ -49,7 +49,7 @@ public class FishManager : MonoBehaviour
     [Range(1, 100)]
     public float fishSeparationForce = 5f;
 
-    public float maxHeightRange = 10f;
+    public float maxHeightRange = 20f;
     public float swimTimeStart = 5f;
     public float pauseTimeStart = 5f;
     public float cartSpeed = 2;
@@ -89,7 +89,9 @@ public class FishManager : MonoBehaviour
             fishObj.tag = "fish";
             fishObj.transform.parent = parentObj.transform;
 
-            fishInstances.Add(new Fish(this, layerMask, maxHeightRange));
+            Fish newFish = fishObj.GetComponent<Fish>();
+            newFish.FishSetup(this, layerMask, maxHeightRange);
+            fishInstances.Add(newFish);
             fishInstances[i].myObject = fishObj;
             fishInstances[i].position = startPos;
             fishInstances[i].velocity = Vector3.zero;
@@ -133,7 +135,7 @@ public class FishManager : MonoBehaviour
         totalVelocity = Vector3.zero;
 
         // get total values
-        for (int i = 0; i < fishQuantity; i++)
+        for (int i = 0; i < fishInstances.Count; i++)
         {
             totalPosition += fishInstances[i].position;
             totalVelocity += fishInstances[i].velocity;
@@ -141,7 +143,7 @@ public class FishManager : MonoBehaviour
         }
 
         // update individual fishs
-        for (int i = 0; i < fishQuantity; i++)
+        for (int i = 0; i < fishInstances.Count; i++)
         {
             fishInstances[i].Update();
         }
@@ -157,5 +159,12 @@ public class FishManager : MonoBehaviour
         _fish.noise = fishNoise;
         _fish.flock = fishFlocking;
         _fish.separationForce = fishSeparationForce;
+    }
+
+    public void RemoveFish(Fish _fish)
+    {
+        Debug.Log("removing fish");
+        fishInstances.Remove(_fish);
+        Destroy(_fish.myObject);
     }
 }

@@ -7,6 +7,7 @@ public class Torpedo : MonoBehaviour
     float speed = 1f;
     float maxSpeed = 20;
     float lifeTime = 5;
+    float life = 5;
 
     public GameObject sharkImpact;
 
@@ -26,6 +27,14 @@ public class Torpedo : MonoBehaviour
             collision.gameObject.GetComponent<IDamagable>()?.TakeDamage(1);
             Instantiate(sharkImpact, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            life--;
+            collision.gameObject.GetComponent<IDamagable>()?.TakeDamage(1);
+            Instantiate(sharkImpact, transform.position, Quaternion.identity);
+
+            if (life <= 0) Destroy(gameObject);
         }
     }
 }
