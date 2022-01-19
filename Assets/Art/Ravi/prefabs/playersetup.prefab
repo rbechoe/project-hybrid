@@ -196,6 +196,7 @@ MonoBehaviour:
   music: {fileID: 830039193774339141}
   ambient: {fileID: 830039192863735682}
   diveSFX: {fileID: 8300000, guid: 5efbf645ffc603744a0036574405d784, type: 3}
+  shootSFX: {fileID: 8300000, guid: 502090f0f0def914fb31d0e2da1d98bb, type: 3}
   CDC: {fileID: 830039193089777218}
   turret: {fileID: 5660024598827548200}
   bulletSpawn: {fileID: 7140850822654039401}

@@ -204,6 +204,8 @@ MonoBehaviour:
   myMat: {fileID: 0}
   position: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  hit1: {fileID: 8300000, guid: d7afecb70ccdefc41b02306cf75e9a24, type: 3}
+  hit2: {fileID: 8300000, guid: e1a9b97aca255ba46814f6c298302bbc, type: 3}
 --- !u!1 &3531621561197239951
 GameObject:
   m_ObjectHideFlags: 0

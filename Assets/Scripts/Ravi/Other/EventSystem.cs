@@ -34,7 +34,7 @@ public static class EventSystem
     }
 }
 
-// event system that takes arguments
+// event system that takes argument
 public static class EventSystem<T>
 {
     private static Dictionary<EventType, System.Action<T>> eventDictionary = new Dictionary<EventType, System.Action<T>>();
