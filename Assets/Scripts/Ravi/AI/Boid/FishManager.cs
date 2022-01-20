@@ -165,6 +165,7 @@ public class FishManager : MonoBehaviour
 
     public void RemoveFish(Fish _fish)
     {
+        EventSystem<int>.InvokeEvent(EventType.SCORE_UP, 10);
         fishInstances.Remove(_fish);
         Destroy(_fish.myObject);
     }

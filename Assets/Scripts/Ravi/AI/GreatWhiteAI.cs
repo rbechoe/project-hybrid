@@ -108,6 +108,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         hp -= damage;
         if (hp <= 0)
         {
+            EventSystem<int>.InvokeEvent(EventType.SCORE_UP, 500);
             audioSystem.ShootSFX(dieSFX, transform.position);
             gameObject.GetComponent<EnemyInfo>().dead = true;
             anim.SetTrigger("Dead");

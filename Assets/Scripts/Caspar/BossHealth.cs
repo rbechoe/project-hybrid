@@ -10,6 +10,8 @@ public class BossHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            EventSystem<int>.InvokeEvent(EventType.SCORE_UP, 5000);
+            EventSystem.InvokeEvent(EventType.GAME_END);
             Destroy(this.gameObject);
         }
         

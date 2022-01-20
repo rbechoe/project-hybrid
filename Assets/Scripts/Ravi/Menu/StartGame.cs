@@ -59,6 +59,7 @@ public class StartGame : MonoBehaviour
         }
 
         EventSystem.RemoveListener(EventType.SHOOT, TriggerStart);
+        EventSystem.InvokeEvent(EventType.GAME_START);
         Destroy(gameObject);
     }
 }

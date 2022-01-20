@@ -26,6 +26,7 @@ public class SubController : MonoBehaviour
     float turretX, turretY;
     float aimSpeed = 40;
     float shootCooldown = 0;
+    float offsetX, offsetY;
     
     public RawImage mainUI, sideAUI, sideBUI;
 
@@ -44,6 +45,10 @@ public class SubController : MonoBehaviour
         EventSystem.AddListener(EventType.AIM_UP, AimUp);
         EventSystem.AddListener(EventType.AIM_DOWN, AimDown);
         EventSystem.AddListener(EventType.SHOOT, Shoot);
+        EventSystem.AddListener(EventType.OFFSET_X_P, OffsetXUp);
+        EventSystem.AddListener(EventType.OFFSET_X_M, OffsetXDown);
+        EventSystem.AddListener(EventType.OFFSET_Y_P, OffsetYUp);
+        EventSystem.AddListener(EventType.OFFSET_Y_M, OffsetYDown);
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
         audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
@@ -121,7 +126,7 @@ public class SubController : MonoBehaviour
 
     void Update()
     {
-        turret.transform.localEulerAngles = new Vector3(turretX, turretY, 0);
+        turret.transform.localEulerAngles = new Vector3(turretX + offsetX, turretY + offsetY, 0);
 
         if (diving)
         {
@@ -137,6 +142,26 @@ public class SubController : MonoBehaviour
         CDC.m_Speed = currentDiveSpeed;
 
         if (shootCooldown > 0) shootCooldown -= Time.deltaTime;
+    }
+
+    public void OffsetXUp()
+    {
+        offsetX++;
+    }
+
+    public void OffsetYUp()
+    {
+        offsetY++;
+    }
+
+    public void OffsetXDown()
+    {
+        offsetX--;
+    }
+
+    public void OffsetYDown()
+    {
+        offsetY--;
     }
 
     public void StartDive()

@@ -15,6 +15,13 @@ public class InputManager : MonoBehaviour
         keybindingsHold.Add(KeyCode.A, EventType.AIM_LEFT);
         keybindingsHold.Add(KeyCode.S, EventType.AIM_DOWN);
         keybindingsHold.Add(KeyCode.D, EventType.AIM_RIGHT);
+        // cheats etc
+        keybindingsHold.Add(KeyCode.Alpha1, EventType.OFFSET_X_M);
+        keybindingsHold.Add(KeyCode.Alpha2, EventType.OFFSET_X_P);
+        keybindingsHold.Add(KeyCode.Alpha3, EventType.OFFSET_Y_M);
+        keybindingsHold.Add(KeyCode.Alpha4, EventType.OFFSET_Y_P);
+        keybindingsHold.Add(KeyCode.Alpha5, EventType.LIVE_DOWN);
+        keybindingsHold.Add(KeyCode.Alpha6, EventType.LIVE_UP);
     }
 
     private void Update()
