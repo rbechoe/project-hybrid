@@ -88,7 +88,7 @@ PrefabInstance:
     - target: {fileID: 1311324624497732983, guid: 3cbfdd698be08894986fd8c4ae654b45, type: 3}
       propertyPath: messageListener
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1422536739286525111}
     - target: {fileID: 1311324624503462493, guid: 3cbfdd698be08894986fd8c4ae654b45, type: 3}
       propertyPath: m_RootOrder
       value: 0
