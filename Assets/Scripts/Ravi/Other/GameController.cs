@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour, IDamagable
     public int lives = 100;
     public int score = 0;
     public AudioClip hitSFX;
-    public GameObject subMarine;
+    public GameObject subMarine, theEnd;
     AudioSystem audioSystem;
     public TextMeshProUGUI livesTxt, scoresTxt;
 
@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour, IDamagable
         EventSystem.AddListener(EventType.GAME_END, GameEnd);
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, TakeDamage);
         EventSystem<int>.AddListener(EventType.SCORE_UP, ScoreIncrement);
+        theEnd.SetActive(false);
         audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
 
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour, IDamagable
     public void GameEnd()
     {
         scoreIncrement = false;
+        theEnd.SetActive(true);
     }
 
     public void TakeDamage(int damage)
