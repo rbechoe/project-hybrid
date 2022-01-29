@@ -7,22 +7,24 @@ public class Crosshair : MonoBehaviour
     public Texture2D crosshairNormal, crosshairHighlight;
     public GameObject crosshairObj;
     public GameObject playerCenter;
-    Material crosshairMat;
-    float scaleMod = 1;
-    float multiplier = 4;
+    private Material crosshairMat;
+    private float scaleMod = 1;
+    private float multiplier = 4;
 
-    void Start()
+    private void Start()
     {
         crosshairMat = crosshairObj.GetComponent<Renderer>().material;
     }
 
     private void Update()
     {
+        // scale crosshair object based on distance
         crosshairMat.mainTexture = crosshairNormal;
         scaleMod = 10 * multiplier;
         crosshairObj.transform.localPosition = new Vector3(0, 0, 4) * (scaleMod / 10f);
         crosshairObj.transform.localScale = new Vector3(38, 18, 1) * scaleMod * 2;
 
+        // make sure crosshair is in front of an enemy with proper scale
         RaycastHit objectHit;
         if (Physics.Raycast(crosshairObj.transform.position, crosshairObj.transform.forward, out objectHit, 40))
         {

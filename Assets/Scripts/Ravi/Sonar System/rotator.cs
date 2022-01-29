@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class rotator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed = 50;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.localEulerAngles += Vector3.right * 50 * Time.deltaTime;
+        transform.localEulerAngles += Vector3.right * speed * Time.deltaTime;
     }
 }

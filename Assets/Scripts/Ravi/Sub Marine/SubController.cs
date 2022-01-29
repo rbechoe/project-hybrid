@@ -23,23 +23,21 @@ public class SubController : MonoBehaviour
     public CinemachineDollyCart CDC;
 
     public GameObject turret, bulletSpawn, projectile;
-    float turretX, turretY;
-    float aimSpeed = 40;
-    float shootCooldown = 0;
-    float offsetX, offsetY;
+    private float turretX, turretY;
+    private float aimSpeed = 40;
+    private float shootCooldown = 0;
+    private float offsetX, offsetY;
     
     public RawImage mainUI, sideAUI, sideBUI;
 
-    bool diving;
-    AudioSystem audioSystem;
+    private bool diving;
+    private AudioSystem audioSystem;
 
     private void Start()
     {
         EventSystem.AddListener(EventType.TOGGLE_DIVE, ToggleDive);
         EventSystem.AddListener(EventType.DIVE_ON, DiveOn);
         EventSystem.AddListener(EventType.DIVE_OFF, DiveOff);
-        EventSystem<float>.AddListener(EventType.TURRET_Y, TurretY);
-        EventSystem<float>.AddListener(EventType.TURRET_X, TurretX);
         EventSystem.AddListener(EventType.AIM_LEFT, AimLeft);
         EventSystem.AddListener(EventType.AIM_RIGHT, AimRight);
         EventSystem.AddListener(EventType.AIM_UP, AimUp);
@@ -49,56 +47,60 @@ public class SubController : MonoBehaviour
         EventSystem.AddListener(EventType.OFFSET_X_M, OffsetXDown);
         EventSystem.AddListener(EventType.OFFSET_Y_P, OffsetYUp);
         EventSystem.AddListener(EventType.OFFSET_Y_M, OffsetYDown);
+
         EventSystem<int>.AddListener(EventType.DAMAGE_PLAYER, GetHit);
+        EventSystem<float>.AddListener(EventType.TURRET_Y, TurretY);
+        EventSystem<float>.AddListener(EventType.TURRET_X, TurretX);
+
         audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
-    
-    void ToggleDive()
+
+    private void ToggleDive()
     {
         diving = !diving;
     }
 
-    void DiveOn()
+    private void DiveOn()
     {
         diving = true;
     }
 
-    void TurretY(float axisY)
+    private void TurretY(float axisY)
     {
         turretY = axisY;
     }
 
-    void TurretX(float axisX)
+    private void TurretX(float axisX)
     {
         turretX = axisX;
     }
 
-    void DiveOff()
+    private void DiveOff()
     {
         diving = false;
     }
 
-    void AimLeft()
+    private void AimLeft()
     {
         turretY -= aimSpeed * Time.deltaTime * 1.5f;
     }
 
-    void AimRight()
+    private void AimRight()
     {
         turretY += aimSpeed * Time.deltaTime * 1.5f;
     }
 
-    void AimUp()
+    private void AimUp()
     {
         turretX -= aimSpeed * Time.deltaTime;
     }
 
-    void AimDown()
+    private void AimDown()
     {
         turretX += aimSpeed * Time.deltaTime;
     }
 
-    void Shoot()
+    private void Shoot()
     {
         if (shootCooldown <= 0)
         {
@@ -108,12 +110,12 @@ public class SubController : MonoBehaviour
         }
     }
 
-    void GetHit(int damage)
+    private void GetHit(int damage)
     {
         StartCoroutine(HitEffect());
     }
 
-    IEnumerator HitEffect()
+    private IEnumerator HitEffect()
     {
         mainUI.color = Color.red;
         sideAUI.color = Color.red;
@@ -124,7 +126,7 @@ public class SubController : MonoBehaviour
         sideBUI.color = Color.white;
     }
 
-    void Update()
+    private void Update()
     {
         turret.transform.localEulerAngles = new Vector3(turretX + offsetX, turretY + offsetY, 0);
 

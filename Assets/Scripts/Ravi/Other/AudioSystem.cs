@@ -7,7 +7,7 @@ public class AudioSystem : MonoBehaviour
     public List<AudioSource> activeSources = new List<AudioSource>();
     public List<AudioSource> inactiveSources = new List<AudioSource>();
 
-    void Start()
+    private void Start()
     {
         foreach (Transform child in transform)
         {
@@ -21,9 +21,11 @@ public class AudioSystem : MonoBehaviour
     public void ShootSFX(AudioClip sfx, Vector3 position)
     {
         if (inactiveSources.Count <= 0) return;
+
         AudioSource source = inactiveSources[0];
         inactiveSources.Remove(source);
         activeSources.Add(source);
+
         source.gameObject.transform.position = position;
         source.PlayOneShot(sfx);
         source.GetComponent<AudioBaby>().isUsed = true;

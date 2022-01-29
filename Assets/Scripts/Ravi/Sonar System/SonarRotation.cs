@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SonarRotation : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         EventSystem.AddListener(EventType.START_BOSS, Rotate);   
     }

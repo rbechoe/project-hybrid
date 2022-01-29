@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Torpedo : MonoBehaviour
 {
-    float speed = 1f;
-    float maxSpeed = 100;
-    float lifeTime = 5;
-    float life = 5;
-    float imoTimer = 0.05f;
+    private float speed = 1f;
+    private float maxSpeed = 100;
+    private float lifeTime = 5;
+    private float life = 5;
+    private float imoTimer = 0.05f;
 
     public GameObject sharkImpact;
 
     public AudioClip hit1, hit2;
 
-    AudioSystem audioSystem;
+    private AudioSystem audioSystem;
 
-    void Update()
+    private void Update()
     {
         if (speed < maxSpeed) speed += 0.5f * Time.deltaTime;
         transform.position += transform.forward * speed;

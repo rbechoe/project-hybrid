@@ -23,8 +23,7 @@ public static class EventSystem
             eventDictionary[type] -= (function);
         }
     }
-
-    // execute event for all those listening
+    
     public static void InvokeEvent(EventType type)
     {
         if (eventDictionary.ContainsKey(type))
@@ -34,7 +33,7 @@ public static class EventSystem
     }
 }
 
-// event system that takes argument
+// event system that takes an argument
 public static class EventSystem<T>
 {
     private static Dictionary<EventType, System.Action<T>> eventDictionary = new Dictionary<EventType, System.Action<T>>();
@@ -56,8 +55,7 @@ public static class EventSystem<T>
             eventDictionary[type] -= (function);
         }
     }
-
-    // execute event for all those listening
+    
     public static void InvokeEvent(EventType type, T parameters)
     {
         if (eventDictionary.ContainsKey(type))
@@ -88,7 +86,7 @@ public enum EventType
     ROT_Y = 13,
     DIVE_ON = 14,
     DIVE_OFF = 15,
-
+    // cheats
     LIVE_DOWN = 16,
     LIVE_UP = 17,
     SCORE_UP = 18,

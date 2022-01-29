@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BallRemover : MonoBehaviour
 {
-    bool fading = false;
-    float aliveTimer;
-    float aliveReset = 1;
+    private bool fading = false;
+    private float aliveTimer;
+    private float aliveReset = 1;
 
     public GameObject matObj;
-    Material mat;
+    private Material mat;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class BallRemover : MonoBehaviour
         aliveTimer = aliveReset;
     }
 
-    void Update()
+    private void Update()
     {
         aliveTimer -= Time.deltaTime;
 

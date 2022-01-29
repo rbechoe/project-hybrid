@@ -29,36 +29,43 @@ public class ColliderInfo : MonoBehaviour
         {
             sub.UpdateMusic(newMusic);
         }
+
         if ((types & TriggerTypes.Ambience) != 0)
         {
             sub.UpdateAmbient(newAmbience);
         }
+
         if ((types & TriggerTypes.Speed) != 0)
         {
             sub.SetDiveSpeed(maxDiveSpeed);
         }
+
         if ((types & TriggerTypes.SFX) != 0)
         {
             sub.LocalSFXOneShot(oneTimeClip);
         }
+
         if ((types & TriggerTypes.StartDive) != 0)
         {
             sub.StartDive();
         }
+
         if ((types & TriggerTypes.StartBoss) != 0)
         {
             EventSystem.InvokeEvent(EventType.START_BOSS);
             Destroy(removeSonarDot); // removes directional light
         }
+
         if ((types & TriggerTypes.BossRadar) != 0)
         {
             Destroy(removeSonarDot); // removes big boss dot
         }
+
         Destroy(gameObject);
     }
 }
 
-[Flags]
+[Flags] // each trigger can have multiple
 public enum TriggerTypes
 {
     None        = 0,

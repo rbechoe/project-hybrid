@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class AudioBaby : MonoBehaviour
 {
-    AudioSource source;
-    AudioSystem system;
+    private AudioSource audioSource;
+    private AudioSystem audioSystem;
 
     public bool isUsed;
 
     private void Start()
     {
-        source = gameObject.GetComponent<AudioSource>();
-        system = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSystem = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSystem>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (isUsed && !source.isPlaying)
+        if (isUsed && !audioSource.isPlaying)
         {
-            system.ReturnSFX(source);
+            audioSystem.ReturnSFX(audioSource);
             isUsed = false;
         }
     }

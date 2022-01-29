@@ -9,7 +9,9 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
+        // toggles
         keybindingsUp.Add(KeyCode.M, EventType.TOGGLE_DIVE);
+        // pc movement
         keybindingsHold.Add(KeyCode.Space, EventType.SHOOT);
         keybindingsHold.Add(KeyCode.W, EventType.AIM_UP);
         keybindingsHold.Add(KeyCode.A, EventType.AIM_LEFT);
