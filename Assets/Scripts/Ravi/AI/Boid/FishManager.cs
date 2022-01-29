@@ -68,12 +68,13 @@ public class FishManager : MonoBehaviour
 
     private CinemachineDollyCart CDC;
 
-    void Start()
+    private void Start()
     {
-        targetObject = gameObject;
-        CDC = gameObject.GetComponent<CinemachineDollyCart>();
         Vector3 posTotal = Vector3.zero;
         GameObject parentObj = new GameObject();
+
+        targetObject = gameObject;
+        CDC = gameObject.GetComponent<CinemachineDollyCart>();
         parentObj.name = "Collection " + gameObject.name;
         averagePosition = targetObject.transform.position;
         swimTime = swimTimeStart;
@@ -86,6 +87,7 @@ public class FishManager : MonoBehaviour
                 targetObject.transform.position.y + (Random.Range(1, 1000) / 100f),
                 targetObject.transform.position.z + (Random.Range(1, 1000) / 100f)
             );
+
             GameObject fishObj = Instantiate(fishPrefabs[chosenFish], startPos, Quaternion.identity);
             fishObj.name = "" + i;
             fishObj.tag = "fish";
@@ -102,15 +104,16 @@ public class FishManager : MonoBehaviour
 
             posTotal += startPos;
         }
+
         isDone = true;
     }
 
-    void Update()
+    private void Update()
     {
         if (isDone) StartCoroutine(Updatefishes());
 
-        averagePosition += (targetObject.transform.position - averagePosition).normalized * Time.deltaTime * movementSpeed;
-
+        Vector3 normalizedPos = (targetObject.transform.position - averagePosition).normalized;
+        averagePosition += normalizedPos * Time.deltaTime * movementSpeed;
         centerMass.transform.position = averagePosition;
 
         if (swimTime > 0)
@@ -118,10 +121,12 @@ public class FishManager : MonoBehaviour
             swimTime -= Time.deltaTime;
             CDC.m_Speed = cartSpeed;
         }
+
         if (swimTime <= 0)
         {
             pauseTime -= Time.deltaTime;
             CDC.m_Speed = 0;
+
             if (pauseTime <= 0)
             {
                 pauseTime = pauseTimeStart;
@@ -130,7 +135,7 @@ public class FishManager : MonoBehaviour
         }
     }
 
-    IEnumerator Updatefishes()
+    private IEnumerator Updatefishes()
     {
         isDone = false;
         totalPosition = Vector3.zero;
@@ -154,19 +159,19 @@ public class FishManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    void UpdatefishSettings(Fish _fish)
+    void UpdatefishSettings(Fish fish)
     {
-        _fish.speed = fishSpeed;
-        _fish.maxNeighbourDistance = maxNeighbourDistance;
-        _fish.noise = fishNoise;
-        _fish.flock = fishFlocking;
-        _fish.separationForce = fishSeparationForce;
+        fish.speed = fishSpeed;
+        fish.maxNeighbourDistance = maxNeighbourDistance;
+        fish.noise = fishNoise;
+        fish.flock = fishFlocking;
+        fish.separationForce = fishSeparationForce;
     }
 
-    public void RemoveFish(Fish _fish)
+    public void RemoveFish(Fish fish)
     {
         EventSystem<int>.InvokeEvent(EventType.SCORE_UP, 10);
-        fishInstances.Remove(_fish);
-        Destroy(_fish.myObject);
+        fishInstances.Remove(fish);
+        Destroy(fish.myObject);
     }
 }

@@ -5,27 +5,27 @@ using UnityEngine;
 public class GreatWhiteAI : MonoBehaviour, IDamagable
 {
     public int hp = 100;
-    public float attackCd;
+    public float attackCd = 1;
     public float graceTime = 20;
     public float detectRange = 20;
 
-    Animator anim;
-    GameObject player;
-    SharkCart cart;
+    private Animator anim;
+    private GameObject player;
+    private SharkCart cart;
     public GameObject cartObj;
 
     public Action sharkIdle;
     public Action[] sharkAttacks;
-    FiniteStateMachine FSM;
-    FiniteStateMachine.State idleState;
-    FiniteStateMachine.State performAction;
+    private FiniteStateMachine FSM;
+    private FiniteStateMachine.State idleState;
+    private FiniteStateMachine.State performAction;
     private readonly Queue<Action> actions = new Queue<Action>();
 
-    bool attacking;
     public AudioClip attackSFX, dieSFX;
-    AudioSystem audioSystem;
+    private AudioSystem audioSystem;
+    private bool attacking;
 
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -41,6 +41,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     private void CreateIdleState()
     {
         sharkIdle.GetComponent<SharkPatrol>()?.SetParams(anim, cart, cartObj);
+
         idleState = (fsm, gameObj) =>
         {
             if (actions.Any())
@@ -49,6 +50,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
                 fsm.PushState(performAction);
             }
         };
+
         FSM.PushState(idleState);
     }
 
@@ -56,9 +58,8 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     {
         performAction = (fsm, gameObj) =>
         {
-            var action = actions.Peek();
-
-            var success = action.PerformAction();
+            Action action = actions.Peek();
+            bool success = action.PerformAction();
 
             if (success)
             {
@@ -85,7 +86,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
         actions.Enqueue(action);
     }
 
-    void Update()
+    private void Update()
     {
         FSM.Update(gameObject);
 
@@ -106,6 +107,7 @@ public class GreatWhiteAI : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         hp -= damage;
+
         if (hp <= 0)
         {
             EventSystem<int>.InvokeEvent(EventType.SCORE_UP, 500);

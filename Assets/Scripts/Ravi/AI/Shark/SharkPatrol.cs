@@ -4,25 +4,9 @@ using UnityEngine;
 
 public class SharkPatrol : Action
 {
-    float followSpeed = 20f;
+    private float followSpeed = 20f;
 
-    SharkCart cart;
-
-    public void SetParams(Animator anim, SharkCart cart, GameObject cartObj)
-    {
-        this.cart = cartObj.GetComponent<SharkCart>();
-    }
-
-    // shark is never done patrolling
-    public override bool PerformAction()
-    {
-        Patrolling();
-        return false;
-    }
-
-    protected override void Reset()
-    {
-    }
+    private SharkCart cart;
 
     private void Patrolling()
     {
@@ -37,5 +21,19 @@ public class SharkPatrol : Action
         {
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         }
+    }
+
+    protected override void Reset() { }
+
+    public void SetParams(Animator anim, SharkCart cart, GameObject cartObj)
+    {
+        this.cart = cartObj.GetComponent<SharkCart>();
+    }
+
+    // shark is never done patrolling
+    public override bool PerformAction()
+    {
+        Patrolling();
+        return false;
     }
 }

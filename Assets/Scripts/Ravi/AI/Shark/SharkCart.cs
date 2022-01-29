@@ -5,23 +5,19 @@ using Cinemachine;
 
 public class SharkCart : MonoBehaviour
 {
-    CinemachineDollyCart CDC;
-
-    [HideInInspector]
-    float moveSpeed = 5;
+    private CinemachineDollyCart CDC;
+    private float moveSpeed = 5;
 
     public GameObject myShark;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         CDC = gameObject.GetComponent<CinemachineDollyCart>();
 
         if (myShark == null) enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         moveSpeed = Mathf.Clamp(moveSpeed, 0, int.MaxValue);
         CDC.m_Speed = moveSpeed;

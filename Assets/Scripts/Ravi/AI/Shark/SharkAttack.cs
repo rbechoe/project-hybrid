@@ -5,45 +5,23 @@ using UnityEngine;
 public class SharkAttack : Action
 {
     public bool inAction;
-    float attackRange = 10;
-    float followSpeed = 25f;
+    private float attackRange = 10;
+    private float followSpeed = 25f;
 
-    float cabinRange, attackPosRange;
+    private float cabinRange, attackPosRange;
 
-    Animator anim;
-    GameObject player, attackPos, cartObj;
-    SharkCart cart;
-    GreatWhiteAI GWAI;
+    private Animator anim;
+    private GameObject player, attackPos, cartObj;
+    private SharkCart cart;
+    private GreatWhiteAI GWAI;
 
     private void Update()
     {
         cabinRange = Vector3.Distance(transform.position, player.transform.position);
         attackPosRange = Vector3.Distance(transform.position, attackPos.transform.position);
     }
-
-    public void SetParams(Animator anim, SharkCart cart, GameObject cartObj, GreatWhiteAI GWAI) // TODO make abstract shark class
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        attackPos = GameObject.FindGameObjectWithTag("PlayerAttack");
-        this.anim = anim;
-        this.cartObj = cartObj;
-        this.cart = cartObj.GetComponent<SharkCart>();
-        this.GWAI = GWAI;
-    }
-
-    public override bool PerformAction()
-    {
-        if (!inAction) StartCoroutine(Attacking());
-        return false;
-    }
-
-    protected override void Reset()
-    {
-        inAction = false;
-        GWAI.ExitAttack();
-    }
     
-    IEnumerator Attacking()
+    private IEnumerator Attacking()
     {
         inAction = true;
         int waitCount = 0;
@@ -109,5 +87,27 @@ public class SharkAttack : Action
         }
 
         yield return new WaitForEndOfFrame();
+    }
+
+    protected override void Reset()
+    {
+        inAction = false;
+        GWAI.ExitAttack();
+    }
+
+    public void SetParams(Animator anim, SharkCart cart, GameObject cartObj, GreatWhiteAI GWAI)
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        attackPos = GameObject.FindGameObjectWithTag("PlayerAttack");
+        this.anim = anim;
+        this.cartObj = cartObj;
+        this.cart = cartObj.GetComponent<SharkCart>();
+        this.GWAI = GWAI;
+    }
+
+    public override bool PerformAction()
+    {
+        if (!inAction) StartCoroutine(Attacking());
+        return false;
     }
 }

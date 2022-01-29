@@ -8,13 +8,14 @@ public class StartGame : MonoBehaviour
     public GameObject[] objsToEnable;
     public GameObject[] toDisable;
     public float pathLength;
-    float curPos;
 
-    CinemachineDollyCart CDC;
+    private float curPos;
 
-    bool start, cleaning;
+    private CinemachineDollyCart CDC;
 
-    void Start()
+    private bool start, cleaning;
+
+    private void Start()
     {
         CDC = gameObject.GetComponent<CinemachineDollyCart>();
         EventSystem.AddListener(EventType.SHOOT, TriggerStart);
@@ -25,12 +26,13 @@ public class StartGame : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (start)
         {
             curPos += Time.deltaTime;
             CDC.m_Position = curPos;
+
             if (curPos > pathLength && !cleaning)
             {
                 cleaning = true;
@@ -39,7 +41,7 @@ public class StartGame : MonoBehaviour
         }
     }
 
-    void TriggerStart()
+    private void TriggerStart()
     {
         if (!start)
         {
@@ -47,12 +49,13 @@ public class StartGame : MonoBehaviour
         }
     }
 
-    void CleanUp()
+    private void CleanUp()
     {
         foreach (GameObject gob in objsToEnable)
         {
             gob.SetActive(true);
         }
+
         foreach (GameObject gob in toDisable)
         {
             gob.SetActive(false);

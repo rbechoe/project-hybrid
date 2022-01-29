@@ -11,14 +11,18 @@ public class Hover : MonoBehaviour
     private float t = 0;
     private float localY;
 
-    void Start()
+    private void Start()
     {
         localY = transform.localPosition.y;
     }
 
-    void Update()
+    private void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, localY + Mathf.Lerp(minimum, maximum, t), transform.localPosition.z);
+        transform.localPosition = new Vector3(
+            transform.localPosition.x, 
+            localY + Mathf.Lerp(minimum, maximum, t), 
+            transform.localPosition.z
+        );
         
         t += Time.deltaTime * speed;
 
