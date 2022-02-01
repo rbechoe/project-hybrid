@@ -6,6 +6,6 @@ public class HorizontalWaveProjectile : WaveProjectile
     {
         var right = Vector3.Cross(dir.normalized, Vector3.up);
 
-        return dir * speed + right * Mathf.Sin(Time.time * waveFrequency) * waveAmplitude * easing;
+        return dir * speed + right * (Mathf.Sin(Time.time * waveFrequency) * waveAmplitude * easing);
     }
 }

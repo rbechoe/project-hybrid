@@ -6,12 +6,12 @@ public class WaveProjectile : Projectile
     [SerializeField] protected float waveFrequency = 1f;
 
     [SerializeField] protected float easingDistance = 5f;
-
-    protected float distance;
     protected float easing;
-    protected Vector3 dir;
 
+    protected Vector3 dir;
     private Vector3 force;
+    
+    protected float distance;
 
     protected override void OnStart()
     {

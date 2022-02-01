@@ -5,9 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private FiniteStateMachine stateMachine;
-
-    private FiniteStateMachine.State idle;
-    private FiniteStateMachine.State performAction;
+    private FiniteStateMachine.State idle, performAction;
 
     [SerializeField] private Action[] actionPattern;
     private readonly Queue<Action> actions = new();

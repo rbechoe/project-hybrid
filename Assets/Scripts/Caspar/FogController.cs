@@ -13,6 +13,7 @@ public class FogController : MonoBehaviour
     
     [SerializeField] private FogProfile[] profiles;
     [SerializeField] private float transitionSpeed;
+    
     [SerializeField] private Transform player;
     
     private Color currentColor;

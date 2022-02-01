@@ -11,6 +11,6 @@ public class HomingProjectile : Projectile
         transform.rotation = Quaternion.LookRotation(newDir);
 
         // Move forward
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * (speed * Time.deltaTime);
     }
 }

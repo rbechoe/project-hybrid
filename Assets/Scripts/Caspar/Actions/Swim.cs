@@ -5,12 +5,11 @@ public class Swim : Action
 {
     [SerializeField] private float swimSpeed;
     [SerializeField] private Vector2 swimDistance;
-    
-    [SerializeField] private CinemachineDollyCart cdc;
-
     private float distance;
     private float distanceTravelled;
     private bool distanceSet;
+    
+    [SerializeField] private CinemachineDollyCart cdc;
 
     public override bool PerformAction()
     {

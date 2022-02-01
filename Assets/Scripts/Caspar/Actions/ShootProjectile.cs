@@ -3,8 +3,7 @@ using UnityEngine;
 public class ShootProjectile : Action
 {
     [SerializeField] private GameObject projectile;
-    [SerializeField] private Transform origin;
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform origin, target;
 
     public override bool PerformAction()
     {

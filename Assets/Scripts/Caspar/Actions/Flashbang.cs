@@ -7,12 +7,13 @@ public class Flashbang : Action
 {
     [SerializeField] private Light lantern;
     [SerializeField] private Volume volume;
+    private Bloom bloom;
+    
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private float duration;
     [SerializeField] private float targetLanternIntensity;
     [SerializeField] private float targetBloomIntensity;
     
-    private Bloom bloom;
     private bool isAnimating;
     private bool isDone;
 

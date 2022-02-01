@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IDamagable
 {
+    protected Rigidbody rb;
+    
     [SerializeField] public Transform target;
+    
     [SerializeField] protected float speed = 1f;
     [SerializeField] protected float turnSpeed = 1f;
+    
     [Space] [SerializeField] private int health;
+    
     [SerializeField] private int damage = 10;
     [SerializeField] private float damageRange = 1f;
-
-    protected Rigidbody rb;
+    
     private Material material;
     private Color startColor;
 
