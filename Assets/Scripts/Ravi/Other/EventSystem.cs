@@ -87,8 +87,8 @@ public enum EventType
     DIVE_ON = 14,
     DIVE_OFF = 15,
     // cheats
-    LIVE_DOWN = 16,
-    LIVE_UP = 17,
+    LIFE_DOWN = 16,
+    LIFE_UP = 17,
     SCORE_UP = 18,
     OFFSET_X_P = 19, // x rotation offset +
     OFFSET_X_M = 20, // x rotation offset -
