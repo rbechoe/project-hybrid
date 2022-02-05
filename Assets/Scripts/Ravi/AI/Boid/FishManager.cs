@@ -159,7 +159,7 @@ public class FishManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    void UpdatefishSettings(Fish fish)
+    private void UpdatefishSettings(Fish fish)
     {
         fish.speed = fishSpeed;
         fish.maxNeighbourDistance = maxNeighbourDistance;
