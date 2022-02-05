@@ -110,7 +110,7 @@ public class FishManager : MonoBehaviour
 
     private void Update()
     {
-        if (isDone) StartCoroutine(Updatefishes());
+        if (isDone) StartCoroutine(UpdateFishes());
 
         Vector3 normalizedPos = (targetObject.transform.position - averagePosition).normalized;
         averagePosition += normalizedPos * Time.deltaTime * movementSpeed;
@@ -135,7 +135,7 @@ public class FishManager : MonoBehaviour
         }
     }
 
-    private IEnumerator Updatefishes()
+    private IEnumerator UpdateFishes()
     {
         isDone = false;
         totalPosition = Vector3.zero;
