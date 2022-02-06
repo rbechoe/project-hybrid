@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour, IDamagable
 
     private void Start()
     {
-        EventSystem.AddListener(EventType.LIVE_UP, LifeUp);
-        EventSystem.AddListener(EventType.LIVE_DOWN, LifeDown);
+        EventSystem.AddListener(EventType.LIFE_UP, LifeUp);
+        EventSystem.AddListener(EventType.LIFE_DOWN, LifeDown);
         EventSystem.AddListener(EventType.GAME_START, GameStart);
         EventSystem.AddListener(EventType.GAME_END, GameEnd);
 

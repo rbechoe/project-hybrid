@@ -21,7 +21,7 @@ public class Fish : MonoBehaviour, IDamagable
     private bool enableCap;
 
     private Vector3 currentVelocity = Vector3.zero;
-    private FishManager manager;
+    private FishManager fishManager;
     private LayerMask LM;
     private AudioSystem audioSystem;
 
@@ -45,7 +45,7 @@ public class Fish : MonoBehaviour, IDamagable
 
     public void FishSetup(FishManager manager, LayerMask mask, float height, bool enableCap)
     {
-        this.manager = manager;
+        this.fishManager = manager;
         this.enableCap = enableCap;
         LM = mask;
         minY = manager.transform.position.y - height;
@@ -55,7 +55,7 @@ public class Fish : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        manager.RemoveFish(this);
+        fishManager.RemoveFish(this);
         if (Random.Range(0, 100) > 50)
             audioSystem.ShootSFX(hit1, transform.position);
         else
@@ -65,11 +65,11 @@ public class Fish : MonoBehaviour, IDamagable
     // calculate fish direction and force
     private Vector3 Force()
     {
-        Vector3 fishDirection = manager.averagePosition;
+        Vector3 fishDirection = fishManager.averagePosition;
         fishDirection -= position;
         fishDirection = fishDirection / flock;
 
-        Vector3 fishVelocity = manager.totalVelocity - velocity;
+        Vector3 fishVelocity = fishManager.totalVelocity - velocity;
         fishVelocity = fishVelocity / (quantity - 1);
         fishVelocity = (fishVelocity - velocity) / noise;
 
@@ -81,7 +81,7 @@ public class Fish : MonoBehaviour, IDamagable
             {
                 if (neighbour.CompareTag("fish")) // can be from different school!
                 {
-                    fishForce -= (manager.fishInstances[int.Parse(neighbour.name)].position - position);
+                    fishForce -= (fishManager.fishInstances[int.Parse(neighbour.name)].position - position);
                 }
                 else
                 {
