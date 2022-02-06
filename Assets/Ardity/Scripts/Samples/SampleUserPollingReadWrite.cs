@@ -8,31 +8,21 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-/**
- * Sample for reading using polling by yourself, and writing too.
- */
-public class SampleUserPolling_ReadWrite : MonoBehaviour
+public class SampleUserPollingReadWrite : MonoBehaviour
 {
     public SerialController serialController;
 
-    // Initialization
-    void Start()
+    private void Start()
     {
         serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
-
         Debug.Log("Press A or Z to execute some actions");
     }
 
-    // Executed each frame
-    void Update()
+    private void Update()
     {
-        //---------------------------------------------------------------------
-        // Send data
-        //---------------------------------------------------------------------
-
-        // If you press one of these keys send it to the serial device. A
-        // sample serial device that accepts this input is given in the README.
+        //Send Data
         if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("Sending A");
@@ -45,11 +35,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
             serialController.SendSerialMessage("Z");
         }
 
-
-        //---------------------------------------------------------------------
-        // Receive data
-        //---------------------------------------------------------------------
-
+        //Receive Data
         string message = serialController.ReadSerialMessage();
         if (message == null)
             return;
@@ -64,7 +50,6 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         {
             string valX = message.Replace("Value X: ", "");
             float valueX = float.Parse(valX);
-            //Debug.Log("Val X: " + valueX);
             EventSystem<float>.InvokeEvent(EventType.TURRET_X, valueX);
         }
 
@@ -72,7 +57,6 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         {
             string valY = message.Replace("Value Y: ", "");
             float valueY = float.Parse(valY);
-            //Debug.Log("Val Y: " + valueY);
             EventSystem<float>.InvokeEvent(EventType.TURRET_Y, valueY);
 
         }
@@ -94,10 +78,16 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
 
         // Check if the message is plain data or a connect/disconnect event.
         if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_CONNECTED))
+        {
             Debug.Log("Connection established");
+        }
         else if (ReferenceEquals(message, SerialController.SERIAL_DEVICE_DISCONNECTED))
+        {
             Debug.Log("Connection attempt failed or disconnection detected");
+        }
         else
+        {
             Debug.Log("Message arrived: " + message);
+        }
     }
 }
