@@ -14,6 +14,9 @@ public class SampleUserPollingReadWrite : MonoBehaviour
 {
     public SerialController serialController;
 
+    public float valY;
+    public float valX;
+
     private void Start()
     {
         serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
@@ -46,20 +49,8 @@ public class SampleUserPollingReadWrite : MonoBehaviour
             EventSystem.InvokeEvent(EventType.SHOOT);
         }
 
-        if (message.Contains("Value X: "))
-        {
-            string valX = message.Replace("Value X: ", "");
-            float valueX = float.Parse(valX);
-            EventSystem<float>.InvokeEvent(EventType.TURRET_X, valueX);
-        }
-
-        if (message.Contains("Value Y: "))
-        {
-            string valY = message.Replace("Value Y: ", "");
-            float valueY = float.Parse(valY);
-            EventSystem<float>.InvokeEvent(EventType.TURRET_Y, valueY);
-
-        }
+        getValue("Value Y: ", valY, EventType.TURRET_Y);
+        getValue("value X: ", valX, EventType.TURRET_X);
 
         if (message.Contains("Switch: "))
         {
@@ -88,6 +79,17 @@ public class SampleUserPollingReadWrite : MonoBehaviour
         else
         {
             Debug.Log("Message arrived: " + message);
+        }
+    }
+
+    private void getValue( string strToRemove, float returnValue, EventType eType)
+    {
+        string message = serialController.ReadSerialMessage();
+        if (message.Contains(strToRemove))
+        {
+            string val = message.Replace(strToRemove, "");
+            returnValue = float.Parse(val);
+            EventSystem<float>.InvokeEvent(eType,returnValue);
         }
     }
 }
